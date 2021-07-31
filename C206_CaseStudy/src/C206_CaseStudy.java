@@ -17,8 +17,42 @@ public class C206_CaseStudy {
 
 
 			} else if (option == 2) {
-
-
+				System.out.println("Stall Staff Users");
+				System.out.println("1. Orders Placed By Customers");
+				System.out.println("2. Purchase Orders of Ingredients");
+				System.out.println("3. Promotion Offers");
+				
+				int choice = Helper.readInt("Enter option to select choice > ");
+				
+				if (choice == 1) {
+					
+				} else if (choice == 2) {
+					
+				} else if (choice == 3) {
+					System.out.println("Promotion Offers");
+					System.out.println("1. Add promotion offers");
+					System.out.println("2. View promotion offers");
+					System.out.println("3. Edit promotion offers");
+					System.out.println("4. Delete promotion offers");
+					
+					int type = Helper.readInt("Enter option to select choice > ");
+					
+					if (type == 1) {
+						C206_CaseStudy.addPoffer();
+					} else if (type == 2) {
+						C206_CaseStudy.viewPoffer();
+					} else if (type == 3) {
+						C206_CaseStudy.editPoffer();
+					} else if (type == 4){
+						C206_CaseStudy.deletePoffer();
+					} else {
+						System.out.println("Invalid type");
+					}
+					
+				} else {
+					System.out.println("Invalid type");
+				}
+				
 			} else if (option == 3) {
 				System.out.println("Bye!");
 			} else {
@@ -48,4 +82,19 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 	}
 	
+	public static void addPoffer() {
+		
+	}
+	
+	public static void viewPoffer() {
+		
+	}
+	
+	public static void editPoffer() {
+		
+	}
+	
+	public static void deletePoffer() {
+		
+	}
 }
