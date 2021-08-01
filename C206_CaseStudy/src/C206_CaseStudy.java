@@ -104,57 +104,6 @@ public class C206_CaseStudy {
 
 	}
 
-	private static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
-		String stallName = Helper.readString("Enter Stall Name > ");
-		String ingredients = Helper.readString("Enter ingredients to buy > ");
-		int quantity = Helper.readInt("Enter the number of quantity to buy >");
-
-		if (stallName.isEmpty() || ingredients.isEmpty() || quantity <= 0) 
-		{
-			System.out.println("New Ingredients has not been added into the Purchases Order!");
-		}
-		else 
-		{
-			PurchaseOrdersList.add(new PurchaseOrders(stallName, ingredients, quantity));
-			System.out.println("New Ingredients has been successfully added into the Purchases Order!");
-		}
-	}
-	
-	private static void ViewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
-		
-		Helper.line(80, "-");
-		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
-		Helper.line(80, "-");
-
-		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
-
-		for (PurchaseOrders pO : PurchaseOrdersList) {
-			output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
-		}
-		System.out.println(output);
-		
-	}
-	
-	private static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
-		
-		Helper.line(80, "-");
-		System.out.println("DELETE PURCHASE ORDER OF INGREDIENTS");
-		Helper.line(80, "-");
-
-		String stallName = Helper.readString("Enter Stall Name to delete > ");
-		String ingredientsName = Helper.readString("Enter Ingredients to delete > ");
-		char confirm = Helper.readChar("Are you sure (Y/N) > ");
-
-		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
-			if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
-				if(confirm == 'Y' || confirm == 'y')
-				{
-					PurchaseOrdersList.remove(i);
-					System.out.println(stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");	
-				}
-			}
-		}
-	}
 
 	public static void menu() {
 		C206_CaseStudy.setHeader("CANTEEN AUTOMATION SYSTEM (CAS)");
@@ -245,6 +194,58 @@ public class C206_CaseStudy {
 			}
 		}
 
+	}
+	
+	private static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+		String stallName = Helper.readString("Enter Stall Name > ");
+		String ingredients = Helper.readString("Enter ingredients to buy > ");
+		int quantity = Helper.readInt("Enter the number of quantity to buy >");
+
+		if (stallName.isEmpty() || ingredients.isEmpty() || quantity <= 0) 
+		{
+			System.out.println("New Ingredients has not been added into the Purchases Order!");
+		}
+		else 
+		{
+			PurchaseOrdersList.add(new PurchaseOrders(stallName, ingredients, quantity));
+			System.out.println("New Ingredients has been successfully added into the Purchases Order!");
+		}
+	}
+	
+	private static void ViewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+		
+		Helper.line(80, "-");
+		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
+		Helper.line(80, "-");
+
+		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
+
+		for (PurchaseOrders pO : PurchaseOrdersList) {
+			output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
+		}
+		System.out.println(output);
+		
+	}
+	
+	private static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+		
+		Helper.line(80, "-");
+		System.out.println("DELETE PURCHASE ORDER OF INGREDIENTS");
+		Helper.line(80, "-");
+
+		String stallName = Helper.readString("Enter Stall Name to delete > ");
+		String ingredientsName = Helper.readString("Enter Ingredients to delete > ");
+		char confirm = Helper.readChar("Are you sure (Y/N) > ");
+
+		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
+			if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
+				if(confirm == 'Y' || confirm == 'y')
+				{
+					PurchaseOrdersList.remove(i);
+					System.out.println(stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");	
+				}
+			}
+		}
 	}
 
 }
