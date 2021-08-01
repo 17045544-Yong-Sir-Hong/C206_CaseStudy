@@ -217,7 +217,7 @@ public class C206_CaseStudy {
 		for (int i = 0; i < foodItemList.size(); i++) {
 			if (name == foodItemList.get(i).getName() && confirm == 'Y') {
 				foodItemList.remove(i);
-				System.out.println(name + "is successfully has been deleted");
+				System.out.println(name + " has been successfully deleted!");
 			} 
 		}
 		
