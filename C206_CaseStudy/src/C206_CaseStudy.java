@@ -109,15 +109,13 @@ public class C206_CaseStudy {
 
 		if (!(name.isEmpty()) && price >= 3 && price <= 15 && !(stallname.isEmpty())) {
 			pofferList.add(new Poffer(name, price, stallname));
-			for (int i = 0; i < pofferList.size(); i++) {
-				if (pofferList.get(i).getStallName().equals(stallname)) {
-					System.out.println("You can only have one promotion offer per stall per day");
-				} else {
-					System.out.println("New promotion offer has been successfully added into the menu!");
-				}
-			}
+			System.out.println("New promotion offer has been successfully added into the menu!");
 		} else {
 			System.out.println("Price MUST be between $3 to $15");
+		} for (int i = 0; i < pofferList.size(); i++) {
+			if (pofferList.size() == 1) {
+				System.out.println("You can only have one promotion offer per stall per day");
+			}
 		}
 	}
 
