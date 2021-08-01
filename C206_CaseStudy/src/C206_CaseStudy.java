@@ -38,7 +38,6 @@ public class C206_CaseStudy {
 						System.out.println("Invalid function");
 					}
 					
-					
 				}
 				
 

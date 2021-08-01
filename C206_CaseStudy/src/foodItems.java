@@ -17,6 +17,5 @@ public class foodItems {
 	public int getSellingPrice() {
 		return sellingPrice;
 	}
-	
 
 }
