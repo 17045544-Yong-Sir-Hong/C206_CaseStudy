@@ -32,6 +32,10 @@ public class C206_CaseStudy {
 					
 					if (function == 1) {
 						addNewStall(stallList);
+					}else if (function ==2) {
+						viewStall(stallList);
+					}else if (function ==3) {
+						deleteStall(stallList);
 					}else {
 						System.out.println("Invalid function");
 					}
@@ -147,6 +151,7 @@ public class C206_CaseStudy {
 		System.out.println("2. View an Existing Stall");
 		System.out.println("3. Delete an Existing Stall");
 	}
+
 	public static void addNewStall(ArrayList<stall> stallList) {
 		Helper.line(80, "-");
 		String stallName= Helper.readString("Enter New Stall Name >");
@@ -154,17 +159,44 @@ public class C206_CaseStudy {
 		String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 		System.out.println("Date of stall " + formattedDate);
 		
-		
-		if(!(stallList.contains(stallName))) {
-			stallList.add(new stall(stallName, formattedDate));
+		if(!(stallList.contains(stallName)) && stallList.size() <= 10) {
+			stallList.add(new stall(stallName));
 			System.out.println("New Stall has been sucessfully added");
 		}else {
 			System.out.println("The Stall is currently exisitng");
 		}
 		
+	}
+	public static void viewStall(ArrayList<stall>stallList) {
+		Helper.line(80, "-");
+		System.out.println("VIEW ALL STALL");
+		Helper.line(80, "-");
 		
+		String output= String.format("%-10s\n", "NAME");
+		
+		for (stall s: stallList) {
+			output += String.format("%-10s \n", s.getStallName());
+		}
+		System.out.println(output);
+	}
+	public static void deleteStall(ArrayList<stall> stallList) {
+		Helper.line(80, "-");
+		System.out.println("DELETE STALL");
+		Helper.line(80, "-");
+		
+		String stallname= Helper.readString("Enter Stall Name to delete > ");
+		char confirm = Helper.readChar("Are you sure (Y/N)> ");
+		
+		for(int i =0; i < stallList.size(); i++) {
+			if(stallname == stallList.get(i).getStallName() && confirm == 'Y' || confirm == 'y') {
+				stallList.remove(i);
+				System.out.println(stallname + " has been successfully deleted");
+				
+			}
+		}
 	}
 	
+
 	
 	public static void foodItemsFunction() {
 		Helper.line(80,  "-");
