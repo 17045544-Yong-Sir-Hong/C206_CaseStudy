@@ -1,4 +1,8 @@
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class C206_CaseStudy {
 
@@ -8,7 +12,14 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<foodItems> foodItemList = new ArrayList<foodItems>();
+
 		ArrayList<Poffer> pofferList = new ArrayList<Poffer>();
+
+
+		ArrayList<PurchaseOrders> PurchaseOrdersList = new ArrayList<PurchaseOrders>();
+
+		ArrayList<stall> stallList = new ArrayList<stall>();
+
 
 		int option = 0;
 
@@ -23,6 +34,16 @@ public class C206_CaseStudy {
 				int pick = Helper.readInt("Enter option to select a choice > ");
 
 				if (pick == 1) {
+
+					canteenAdminFunction();
+					int function = Helper.readInt("Enter option to select a function > ");
+
+					if (function == 1) {
+						addNewStall(stallList);
+					} else {
+						System.out.println("Invalid function");
+					}
+
 
 				} else if (pick == 2) {
 					foodItemsFunction();
@@ -42,7 +63,6 @@ public class C206_CaseStudy {
 				}
 
 			} else if (option == 2) {
-				canteenAdministratorMenu();
 				Helper.line(80, "-");
 				System.out.println("Stall Staff Users");
 				Helper.line(80, "-");
@@ -52,6 +72,25 @@ public class C206_CaseStudy {
 				int choice = Helper.readInt("Enter option to select a choice > ");
 
 				if (choice == 1) {
+
+					Helper.line(80, "-");
+					System.out.println("PURCHASE ORDERS OF INGREDIENTS");
+					Helper.line(80, "-");
+					System.out.println("1. Add Purchase Orders Of Ingredeints");
+					System.out.println("2. View Purchase Order Of Ingredients");
+					System.out.println("3. Delete Purchase Orders Of Ingredients \n");
+
+					int function = Helper.readInt("Enter option to select a function > ");
+
+					if (function == 1) {
+						addPurchasesOrder(PurchaseOrdersList);
+					} else if (function == 2) {
+						ViewPurchasesOrder(PurchaseOrdersList);
+					} else if (function == 3) {
+						deletePurchasesOrder(PurchaseOrdersList);
+					} else {
+						System.out.println("Invalid function");
+					}
 
 				} else if (choice == 2) {
 					Helper.line(80, "-");
@@ -66,6 +105,7 @@ public class C206_CaseStudy {
 					if (function == 1) {
 						C206_CaseStudy.addPoffer(pofferList);
 					} else if (function == 2) {
+
 						C206_CaseStudy.viewPoffer(pofferList);
 					} else if (function == 3) {
 						C206_CaseStudy.deletePoffer(pofferList);
@@ -82,7 +122,6 @@ public class C206_CaseStudy {
 			} else {
 				System.out.println("Invalid option");
 			}
-
 		}
 
 	}
@@ -106,18 +145,26 @@ public class C206_CaseStudy {
 		String name = Helper.readString("Enter New Promotion Offer Name > ");
 		Integer price = Helper.readInt("Enter New Promotion Offer Selling Price ($3 to $15) > $");
 		String stallname = Helper.readString("Enter Stall Name > ");
+		
+		int count = 0;
 
-		if (!(name.isEmpty()) && price >= 3 && price <= 15 && !(stallname.isEmpty())) {
-			pofferList.add(new Poffer(name, price, stallname));
-			System.out.println("New promotion offer has been successfully added into the menu!");
+		if (!(name.isEmpty()) || (price >= 3 && price <= 15) || !(stallname.isEmpty())) {
+			for (int i = 0; i < pofferList.size(); i++) {
+				if (pofferList.get(i).getStallName().contains(stallname)){
+					count++;
+				}
+				}
+			if (count < 1) {
+				pofferList.add(new Poffer(name, price, stallname));
+				System.out.println("New promotion offer has been successfully added into the menu!");
+			} else { 
+				System.out.println("There can only be one promotion offer per stall per day.");
+			}
 		} else {
 			System.out.println("Price MUST be between $3 to $15");
-		} for (int i = 0; i < pofferList.size(); i++) {
-			if (pofferList.size() == 1) {
-				System.out.println("You can only have one promotion offer per stall per day");
-			}
 		}
 	}
+
 
 	public static void viewPoffer(ArrayList<Poffer> pofferList) {
 		setHeader("VIEW PROMOTION OFFERS IN MENU");
@@ -128,6 +175,8 @@ public class C206_CaseStudy {
 		}
 		System.out.println(output);
 	}
+	
+
 
 	public static void deletePoffer(ArrayList<Poffer> pofferList) {
 		setHeader("DELETE PROMOTION OFFERS IN MENU");
@@ -135,9 +184,9 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 
 		for (int i = 0; i < pofferList.size(); i++) {
-			if (pofferList.get(i).getName().equals(name) && confirm == 'Y') {
+			if (pofferList.get(i).getName().equals(name) && confirm == 'Y' || confirm == 'y') {
 				pofferList.remove(i);
-				System.out.println(name + " is has been successfully deleted!");
+				System.out.println(name + " has been successfully deleted!");
 			}
 		}
 	}
@@ -148,6 +197,32 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 		System.out.println("1. Stall");
 		System.out.println("2. Food Items in Menu \n");
+	}
+
+
+	public static void canteenAdminFunction() {
+		Helper.line(80, "-");
+		System.out.println("STALL ITEMS IN MENU");
+		Helper.line(80, "-");
+		System.out.println("1. Add a New Stall");
+		System.out.println("2. View an Existing Stall");
+		System.out.println("3. Delete an Existing Stall");
+	}
+
+	public static void addNewStall(ArrayList<stall> stallList) {
+		Helper.line(80, "-");
+		String stallName = Helper.readString("Enter New Stall Name >");
+		LocalDate today = LocalDate.now();
+		String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+		System.out.println("Date of stall " + formattedDate);
+
+		if (!(stallList.contains(stallName))) {
+			stallList.add(new stall(stallName, formattedDate));
+			System.out.println("New Stall has been sucessfully added");
+		} else {
+			System.out.println("The Stall is currently exisitng");
+		}
+
 	}
 
 	public static void foodItemsFunction() {
@@ -201,10 +276,81 @@ public class C206_CaseStudy {
 		for (int i = 0; i < foodItemList.size(); i++) {
 			if (foodItemList.get(i).getName().equals(name) && confirm == 'Y') {
 				foodItemList.remove(i);
+
 				System.out.println(name + " is has been successfully deleted!");
+
+				System.out.println(name + " has been successfully deleted!");
+
 			}
 		}
 
 	}
 
+	private static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+		String stallName = Helper.readString("Enter Stall Name > ");
+		String ingredients = Helper.readString("Enter ingredients to buy > ");
+		int quantity = Helper.readInt("Enter the number of quantity to buy >");
+
+		int count = 0;
+
+		if (stallName.isEmpty() || ingredients.isEmpty() || quantity <= 0) {
+			System.out.println("New Ingredients has not been added into the Purchases Order!");
+		}
+
+		else 
+		{
+			for (int i = 0; i < PurchaseOrdersList.size(); i++) 
+			{
+				if (PurchaseOrdersList.get(i).getStallName().contains(stallName)) 
+				{	
+					count++;
+				}
+			}
+			if (count < 8) {
+				PurchaseOrdersList.add(new PurchaseOrders(stallName, ingredients, quantity));
+				System.out.println("New Ingredients has been successfully added into the Purchases Order!");
+			} 
+			else 
+			{
+				System.out.println("Exceeded the number of purchase order for this week!");
+			}
+		}
+	}
+
+	private static void ViewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+
+		Helper.line(80, "-");
+		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
+		Helper.line(80, "-");
+
+		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
+
+		for (PurchaseOrders pO : PurchaseOrdersList) {
+			output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
+		}
+		System.out.println(output);
+
+	}
+
+	private static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+
+		Helper.line(80, "-");
+		System.out.println("DELETE PURCHASE ORDER OF INGREDIENTS");
+		Helper.line(80, "-");
+
+		String stallName = Helper.readString("Enter Stall Name to delete > ");
+		String ingredientsName = Helper.readString("Enter Ingredients to delete > ");
+		char confirm = Helper.readChar("Are you sure (Y/N) > ");
+
+		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
+			if (PurchaseOrdersList.get(i).getStallName().equals(stallName)
+					&& PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
+				if (confirm == 'Y' || confirm == 'y') {
+					PurchaseOrdersList.remove(i);
+					System.out.println(
+							stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");
+				}
+			}
+		}
+	}
 }
