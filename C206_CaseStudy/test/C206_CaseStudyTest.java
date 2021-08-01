@@ -64,10 +64,7 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-<<<<<<< HEAD
-=======
-	
->>>>>>> branch 'master' of https://github.com/17045544-Yong-Sir-Hong/C206_CaseStudy.git
+
 	@After
 	public void tearDown() throws Exception {
 		ft1 = null;
