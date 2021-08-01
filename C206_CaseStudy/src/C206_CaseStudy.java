@@ -211,6 +211,7 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
 
 	public static void viewFoodItems(ArrayList<foodItems> foodItemList) {
 		Helper.line(80, "-");
