@@ -1,4 +1,8 @@
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class C206_CaseStudy {
 
@@ -8,7 +12,12 @@ public class C206_CaseStudy {
 		// TODO Auto-generated method stub
 
 		ArrayList<foodItems> foodItemList = new ArrayList<foodItems>();
+
 		ArrayList<PurchaseOrders> PurchaseOrdersList = new ArrayList<PurchaseOrders>();
+
+
+		ArrayList<stall> stallList = new ArrayList<stall>();
+		
 
 		int option = 0;
 
@@ -23,6 +32,17 @@ public class C206_CaseStudy {
 				int pick = Helper.readInt("Enter option to select a choice > ");
 
 				if (pick == 1) {
+
+					canteenAdminFunction();
+					int function = Helper.readInt("Enter option to select a function > ");
+					
+					if (function == 1) {
+						addNewStall(stallList);
+					}else {
+						System.out.println("Invalid function");
+					}
+					
+					
 
 				} else if (pick == 2) {
 					foodItemsFunction();
@@ -99,7 +119,6 @@ public class C206_CaseStudy {
 			} else {
 				System.out.println("Invalid option");
 			}
-
 		}
 
 	}
@@ -138,6 +157,34 @@ public class C206_CaseStudy {
 		System.out.println("1. Stall");
 		System.out.println("2. Food Items in Menu \n");
 	}
+
+	public static void canteenAdminFunction() {
+		Helper.line(80, "-");
+		System.out.println("STALL ITEMS IN MENU");
+		Helper.line(80, "-");
+		System.out.println("1. Add a New Stall");
+		System.out.println("2. View an Existing Stall");
+		System.out.println("3. Delete an Existing Stall");
+	}
+	public static void addNewStall(ArrayList<stall> stallList) {
+		Helper.line(80, "-");
+		String stallName= Helper.readString("Enter New Stall Name >");
+		LocalDate today = LocalDate.now();
+		String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+		System.out.println("Date of stall " + formattedDate);
+		
+		
+		if(!(stallList.contains(stallName))) {
+			stallList.add(new stall(stallName, formattedDate));
+			System.out.println("New Stall has been sucessfully added");
+		}else {
+			System.out.println("The Stall is currently exisitng");
+		}
+		
+		
+	}
+	
+	
 
 	public static void foodItemsFunction() {
 		Helper.line(80, "-");
@@ -237,6 +284,7 @@ public class C206_CaseStudy {
 		String ingredientsName = Helper.readString("Enter Ingredients to delete > ");
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 
+
 		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
 			if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
 				if(confirm == 'Y' || confirm == 'y')
@@ -247,5 +295,4 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-
 }
