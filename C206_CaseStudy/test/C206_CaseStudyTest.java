@@ -25,12 +25,7 @@ public class C206_CaseStudyTest {
 		foodItemList = new ArrayList<foodItems>();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-		ft1 = null;
-		ft2 = null;
-		foodItemList = null;
-	}
+
 
 	@Test
 	public void c206_test() {
@@ -67,6 +62,14 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testDeleteFoodItems() {
 		
+	}
+	
+	
+	@After
+	public void tearDown() throws Exception {
+		ft1 = null;
+		ft2 = null;
+		foodItemList = null;
 	}
 
 }
