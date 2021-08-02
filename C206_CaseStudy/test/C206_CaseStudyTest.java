@@ -34,15 +34,13 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
+
 		
 
 		st1 = new stall("Drinks");
 		st2 = new stall("Korean Food");
-		
 		stallList = new ArrayList<stall>();
 
-
-		
 		
 		
 		purchaseOrder1 = new PurchaseOrders("Test1", "Eggs", 20);
@@ -68,8 +66,9 @@ public class C206_CaseStudyTest {
 		assertNotNull("Test if there is valid Stall arraylist to add to", stallList);
 		
 		//Given an empty list, after adding 1 item, the size of the list is 1
-		C206_CaseStudy.addNewStall(stallList,st1);	
+		stallList.add(st1);	
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		assertSame("Check that stall is added", st1, stallList.get(0));
 		
 	
 		
@@ -79,7 +78,7 @@ public class C206_CaseStudyTest {
 	public void testRetrieveStall() {
 		assertNotNull("Test if there is valid stall arraylist to add to", stallList);
 		
-		String allStall= C206_CaseStudy.
+		
 		
 		
 	}
@@ -134,17 +133,24 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	
+	@Test
 	public void testAddPurchasesOrder()
 	{
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid PurchasesOrder arraylist to add to", PurchaseOrdersList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		PurchaseOrdersList.add(purchaseOrder1);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
 		
 	}
-	
+	@Test
 	public void testViewPurchasesOrder()
 	{
 		
 	}
-	
+	@Test
 	public void testdeletePurchasesOrder()
 	{
 		
