@@ -32,11 +32,11 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
-<<<<<<< HEAD
+
 		stallList = new ArrayList<stall>();
-=======
+
 		
->>>>>>> branch 'master' of https://github.com/17045544-Yong-Sir-Hong/C206_CaseStudy.git
+
 		
 		
 		
@@ -116,24 +116,24 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	
+	@Test
 	public void testAddPurchasesOrder()
 	{
 		// Item list is not null, so that can add a new item - boundary
 		assertNotNull("Check if there is valid PurchasesOrder arraylist to add to", PurchaseOrdersList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		C206_CaseStudy
-		assertEquals("Check that Camcorder arraylist size is 1", 1, camcorderList.size());
-		assertSame("Check that Camcorder is added", cc1, camcorderList.get(0));
+		PurchaseOrdersList.add(purchaseOrder1);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
 		
 	}
-	
+	@Test
 	public void testViewPurchasesOrder()
 	{
 		
 	}
-	
+	@Test
 	public void testdeletePurchasesOrder()
 	{
 		
