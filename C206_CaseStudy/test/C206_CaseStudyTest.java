@@ -11,6 +11,8 @@ public class C206_CaseStudyTest {
 	private foodItems ft1;
 	private foodItems ft2;
 	private ArrayList<foodItems> foodItemList;
+	private stall st1;
+	private stall st2;
 	private ArrayList<stall> stallList;
 	private Poffer po1;
 	private Poffer po2;
@@ -32,11 +34,14 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
-<<<<<<< HEAD
-		stallList = new ArrayList<stall>();
-=======
 		
->>>>>>> branch 'master' of https://github.com/17045544-Yong-Sir-Hong/C206_CaseStudy.git
+
+		st1 = new stall("Drinks");
+		st2 = new stall("Korean Food");
+		
+		stallList = new ArrayList<stall>();
+
+
 		
 		
 		
@@ -59,10 +64,23 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testaddNewStall() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Stall arraylist to add to", stallList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		C206_CaseStudy.addNewStall(stallList,st1);	
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		
+	
+		
 		
 	}
 	@Test
-	public void testviewStall() {
+	public void testRetrieveStall() {
+		assertNotNull("Test if there is valid stall arraylist to add to", stallList);
+		
+		String allStall= C206_CaseStudy.
+		
 		
 	}
 	public void testdeleteStall() {
@@ -134,8 +152,11 @@ public class C206_CaseStudyTest {
 	
 	@After
 	public void tearDown() throws Exception {
+		st1=null;
+		st2=null;
 		ft1 = null;
 		ft2 = null;
+		stallList=null;
 		foodItemList = null;
 	}
 
