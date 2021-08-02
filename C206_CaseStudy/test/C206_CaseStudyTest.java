@@ -70,19 +70,51 @@ public class C206_CaseStudyTest {
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
 		assertSame("Check that stall is added", st1, stallList.get(0));
 		
+		stallList.add(st2);	
+		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
+		assertSame("Check that stall is added", st2, stallList.get(1));
+		
+		
 	
 		
 		
 	}
 	@Test
-	public void testRetrieveStall() {
+	public void testRetrieveAllStall() {
 		assertNotNull("Test if there is valid stall arraylist to add to", stallList);
+		String allstall = C206_CaseStudy.retrieveAllstall(stallList);
+		String testoutput="";
+		assertEquals("Check that ViewAllstallList", testoutput,allstall);
+		
+		stallList.add(st1);
+		stallList.add(st2);
+		assertEquals("Test if that stall arraylist size is 2?" , 2, stallList.size());
+		
+		allstall = C206_CaseStudy.retrieveAllstall(stallList);
+		
+		testoutput = String.format("%-10s ", "drinks");
+		testoutput += String.format("%-10s", "Korean Food");
+		assertEquals("Check that ViewAllstallList", testoutput,allstall);
 		
 		
 		
 		
 	}
 	public void testdeleteStall() {
+		stallList.add(st1);	
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		assertSame("Check that stall is added", st1, stallList.get(0));
+		
+		stallList.add(st2);	
+		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
+		assertSame("Check that stall is added", st2, stallList.get(1));
+		
+		stallList.remove(1);
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		stallList.remove(0);
+		assertEquals("Test if that stall arraylist size is 0?", 0, stallList.size());
+		
+		
 		
 	}
 	
