@@ -11,6 +11,7 @@ public class C206_CaseStudyTest {
 	private foodItems ft1;
 	private foodItems ft2;
 	private ArrayList<foodItems> foodItemList;
+	private ArrayList<stall> stallList;
 	private Poffer po1;
 	private Poffer po2;
 	private ArrayList<Poffer> PofferList;
@@ -31,7 +32,11 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
+<<<<<<< HEAD
+		stallList = new ArrayList<stall>();
+=======
 		
+>>>>>>> branch 'master' of https://github.com/17045544-Yong-Sir-Hong/C206_CaseStudy.git
 		
 		
 		
@@ -52,6 +57,18 @@ public class C206_CaseStudyTest {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
+	@Test
+	public void testaddNewStall() {
+		
+	}
+	@Test
+	public void testviewStall() {
+		
+	}
+	public void testdeleteStall() {
+		
+	}
+	
 	
 	@Test
 	public void testAddFoodItems() {
