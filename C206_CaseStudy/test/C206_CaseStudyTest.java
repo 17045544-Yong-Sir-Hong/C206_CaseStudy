@@ -11,6 +11,9 @@ public class C206_CaseStudyTest {
 	private foodItems ft1;
 	private foodItems ft2;
 	private ArrayList<foodItems> foodItemList;
+	private Poffer po1;
+	private Poffer po2;
+	private ArrayList<Poffer> PofferList;
 	
 	public C206_CaseStudyTest() {
 		super();
@@ -23,6 +26,11 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
+		
+		po1 = new Poffer("Chicken", 3, "Chicken");
+		po2 = new Poffer("Duck", 6, "Duck");
+		
+		
 	}
 
 
@@ -64,23 +72,26 @@ public class C206_CaseStudyTest {
 		
 	}
 	
+	@Test
+	public void testaddPoffer() {
+		
+	}
+	
+	@Test
+	public void testviewPoffer() {
+		
+	}
+	
+	@Test
+	public void testdeletePoffer() {
+		
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		ft1 = null;
 		ft2 = null;
 		foodItemList = null;
 	}
-	
-	public void testaddPoffer() {
 		
-	}
-	
-	public void testviewPoffer() {
-		
-	}
-	
-	public void testdeletePoffer() {
-		
-	}
-	
 }
