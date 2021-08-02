@@ -72,29 +72,41 @@ public class C206_CaseStudyTest {
 	}
 	
 	
-	@Test
-	public void testAddFoodItems() {
-//		// Item list is not null, so that can add a new item - boundary
-//		
-//		// Ensure that the Selling Price entered must be integer & between 3 to 15
-//		
-//		
-//		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
-//		//The item just added is as same as the first item of the list
-//		C206_CaseStudy.addFoodItems(foodItemList);
-//		assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size());
-//		assertSame("Check that foodItems is added", ft1, foodItemList.get(0));
-//		
-//		
-//		//Add another item. test The size of the list is 2? -normal
-//		//The item just added is as same as the second item of the list
-//		C206_CaseStudy.addFoodItems(foodItemList);
-//		assertEquals("Check that foodItems arraylist size is 2", 2, foodItemList.size());
-//		assertSame("Check that foodItems is added", ft2, foodItemList.get(1));
-	}
+	@Test 
+	 public void testAddFoodItems() { 
+	  // Ensure that the Selling Price entered must be integer & between 3 to 15 
+	   
+	  // Item list is not null, so that can add a new item - boundary 
+	  assertNotNull("Check if there is valid foodItems arraylist to add to", foodItemList); 
+	  //Given an empty list, after adding 1 item, the size of the list is 1 - normal 
+	  //The item just added is as same as the first item of the list 
+	  foodItemList.add(ft1); 
+	  assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size()); 
+	  assertSame("Check that foodItems is added", ft1, foodItemList.get(0)); 
+	 }
 	
 	@Test
 	public void testRetrieveAllFoodItems() { 
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid foodItems arraylist to add to", foodItemList); 
+		
+		//test if the list of fooditems retrieved from the case study is empty
+		String allFoodItems = C206_CaseStudy.retrieveAllFoodItems(foodItemList); 
+		String testOutput = "";
+		assertEquals("Check that ViewAllFoodItemslist", testOutput, allFoodItems); 
+				
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		foodItemList.add(ft1);
+		foodItemList.add(ft2);
+		assertEquals("Test if that Camcorder arraylist size is 2?", 2, foodItemList.size());
+		
+		//test if the expected output string same as the list of fooditems retrieved from the case study
+		allFoodItems = C206_CaseStudy.retrieveAllFoodItems(foodItemList);
+
+		testOutput = String.format("%-10s $%-10d\n", "Curry", 3);
+		testOutput += String.format("%-10s $%-10d\n", "Soup", 15);
+	
+		assertEquals("Check that ViewAllFoodItemlist", testOutput, allFoodItems);
 		
 	}
 	
