@@ -11,6 +11,8 @@ public class C206_CaseStudyTest {
 	private foodItems ft1;
 	private foodItems ft2;
 	private ArrayList<foodItems> foodItemList;
+	private stall st1;
+	private stall st2;
 	private ArrayList<stall> stallList;
 	private Poffer po1;
 	private Poffer po2;
@@ -34,11 +36,12 @@ public class C206_CaseStudyTest {
 		
 		foodItemList = new ArrayList<foodItems>();
 
+		
+
+		st1 = new stall("Drinks");
+		st2 = new stall("Korean Food");
 		stallList = new ArrayList<stall>();
 
-		
-
-		
 		
 		
 		purchaseOrder1 = new PurchaseOrders("Test1", "Eggs", 20);
@@ -61,13 +64,60 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testaddNewStall() {
+		// Item list is not null, so that can add a new item
+		assertNotNull("Test if there is valid Stall arraylist to add to", stallList);
+		
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		stallList.add(st1);	
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		assertSame("Check that stall is added", st1, stallList.get(0));
+		
+		stallList.add(st2);	
+		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
+		assertSame("Check that stall is added", st2, stallList.get(1));
+		
+		
+	
+		
 		
 	}
 	@Test
-	public void testviewStall() {
+	public void testRetrieveAllStall() {
+		assertNotNull("Test if there is valid stall arraylist to add to", stallList);
+		String allstall = C206_CaseStudy.retrieveAllstall(stallList);
+		String testoutput="";
+		assertEquals("Check that ViewAllstallList", testoutput,allstall);
+		
+		stallList.add(st1);
+		stallList.add(st2);
+		assertEquals("Test if that stall arraylist size is 2?" , 2, stallList.size());
+		
+		allstall = C206_CaseStudy.retrieveAllstall(stallList);
+		
+		testoutput = String.format("%-10s ", "drinks");
+		testoutput += String.format("%-10s", "Korean Food");
+		
+		C206_CaseStudy.viewAllstall(stallList);
+		
+		
+		
 		
 	}
 	public void testdeleteStall() {
+		stallList.add(st1);	
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		assertSame("Check that stall is added", st1, stallList.get(0));
+		
+		stallList.add(st2);	
+		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
+		assertSame("Check that stall is added", st2, stallList.get(1));
+		
+		stallList.remove(1);
+		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		stallList.remove(0);
+		assertEquals("Test if that stall arraylist size is 0?", 0, stallList.size());
+		
+		
 		
 	}
 	
@@ -244,8 +294,11 @@ public class C206_CaseStudyTest {
 	
 	@After
 	public void tearDown() throws Exception {
+		st1=null;
+		st2=null;
 		ft1 = null;
 		ft2 = null;
+		stallList=null;
 		foodItemList = null;
 		purchaseOrder1 = null;
 		purchaseOrder2 = null;

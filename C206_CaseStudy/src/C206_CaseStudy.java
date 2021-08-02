@@ -41,7 +41,7 @@ public class C206_CaseStudy {
 					if (function == 1) {
 						addNewStall(stallList);
 					}else if (function ==2) {
-						viewStall(stallList);
+						viewAllstall(stallList);
 					}else if (function ==3) {
 						deleteStall(stallList);
 					}else {
@@ -231,18 +231,35 @@ public class C206_CaseStudy {
 
 		
 	}
-	public static void viewStall(ArrayList<stall>stallList) {
-		Helper.line(80, "-");
-		System.out.println("VIEW ALL STALL");
-		Helper.line(80, "-");
+//	public static void viewStall(ArrayList<stall>stallList) {
+	//	Helper.line(80, "-");
+		//System.out.println("VIEW ALL STALL");
+		//Helper.line(80, "-");
 		
-		String output= String.format("%-10s\n", "NAME");
+		//String output= String.format("%-10s\n", "NAME");
 		
-		for (stall s: stallList) {
-			output += String.format("%-10s \n", s.getStallName());
+		//for (stall s: stallList) {
+			//output += String.format("%-10s \n", s.getStallName());
+		//}
+		//System.out.println(output);
+	//}
+	public static String retrieveAllstall(ArrayList<stall> stallList) {
+		String output = "";
+
+		for (int i = 0; i < stallList.size(); i++) {
+
+			output += String.format("%-10s \n", stallList.get(i).getStallName());
+					
 		}
+		return output;
+	}
+	public static void viewAllstall(ArrayList<stall> stallList) {
+		C206_CaseStudy.setHeader("STALL");
+		String output = String.format("%-10s\n", "NAME");
+		 output += retrieveAllstall(stallList);	
 		System.out.println(output);
 	}
+	
 	public static void deleteStall(ArrayList<stall> stallList) {
 		Helper.line(80, "-");
 		System.out.println("DELETE STALL");
