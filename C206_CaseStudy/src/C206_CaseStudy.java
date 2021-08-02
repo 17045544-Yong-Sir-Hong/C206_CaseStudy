@@ -15,11 +15,9 @@ public class C206_CaseStudy {
 
 		ArrayList<Poffer> pofferList = new ArrayList<Poffer>();
 
-
 		ArrayList<PurchaseOrders> PurchaseOrdersList = new ArrayList<PurchaseOrders>();
 
 		ArrayList<stall> stallList = new ArrayList<stall>();
-
 
 		int option = 0;
 
@@ -40,14 +38,13 @@ public class C206_CaseStudy {
 
 					if (function == 1) {
 						addNewStall(stallList);
-					}else if (function ==2) {
+					} else if (function == 2) {
 						viewAllstall(stallList);
-					}else if (function ==3) {
+					} else if (function == 3) {
 						deleteStall(stallList);
-					}else {
+					} else {
 						System.out.println("Invalid function");
 					}
-
 
 				} else if (pick == 2) {
 					foodItemsFunction();
@@ -110,7 +107,7 @@ public class C206_CaseStudy {
 						C206_CaseStudy.addPoffer(pofferList);
 					} else if (function == 2) {
 
-						C206_CaseStudy.viewPoffer(pofferList);
+						C206_CaseStudy.viewAllPoffer(pofferList);
 					} else if (function == 3) {
 						C206_CaseStudy.deletePoffer(pofferList);
 					} else {
@@ -149,19 +146,19 @@ public class C206_CaseStudy {
 		String name = Helper.readString("Enter New Promotion Offer Name > ");
 		Integer price = Helper.readInt("Enter New Promotion Offer Selling Price ($3 to $15) > $");
 		String stallname = Helper.readString("Enter Stall Name > ");
-		
+
 		int count = 0;
 
 		if (!(name.isEmpty()) || (price >= 3 && price <= 15) || !(stallname.isEmpty())) {
 			for (int i = 0; i < pofferList.size(); i++) {
-				if (pofferList.get(i).getStallName().contains(stallname)){
+				if (pofferList.get(i).getStallName().contains(stallname)) {
 					count++;
 				}
-				}
+			}
 			if (count < 1) {
 				pofferList.add(new Poffer(name, price, stallname));
 				System.out.println("New promotion offer has been successfully added into the menu!");
-			} else { 
+			} else {
 				System.out.println("There can only be one promotion offer per stall per day.");
 			}
 		} else {
@@ -169,18 +166,23 @@ public class C206_CaseStudy {
 		}
 	}
 
+	public static String retrieveAllPoffer(ArrayList<Poffer> PofferList) {
+		String output = "";
 
-	public static void viewPoffer(ArrayList<Poffer> pofferList) {
+		for (int i = 0; i < PofferList.size(); i++) {
+
+			output += String.format("%-10s $%-19d %-10s\n", PofferList.get(i).getName(),
+					PofferList.get(i).getSellingPrice(), PofferList.get(i).getStallName());
+		}
+		return output;
+	}
+
+	public static void viewAllPoffer(ArrayList<Poffer> PofferList) {
 		setHeader("VIEW PROMOTION OFFERS IN MENU");
 		String output = String.format("%-10s %-20s %-10s\n", "NAME", "SELLING PRICE", "STALL NAME");
-
-		for (Poffer po : pofferList) {
-			output += String.format("%-10s $%-19d %-10s\n", po.getName(), po.getSellingPrice(), po.getStallName());
-		}
+		output += retrieveAllPoffer(PofferList);
 		System.out.println(output);
 	}
-	
-
 
 	public static void deletePoffer(ArrayList<Poffer> pofferList) {
 		setHeader("DELETE PROMOTION OFFERS IN MENU");
@@ -203,7 +205,6 @@ public class C206_CaseStudy {
 		System.out.println("2. Food Items in Menu \n");
 	}
 
-
 	public static void canteenAdminFunction() {
 		Helper.line(80, "-");
 		System.out.println("STALL ITEMS IN MENU");
@@ -220,8 +221,7 @@ public class C206_CaseStudy {
 		String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
 		System.out.println("Date of stall " + formattedDate);
 
-		
-		if(!(stallList.contains(stallName)) && stallList.size() <= 10) {
+		if (!(stallList.contains(stallName)) && stallList.size() <= 10) {
 			stallList.add(new stall(stallName));
 
 			System.out.println("New Stall has been sucessfully added");
@@ -229,54 +229,54 @@ public class C206_CaseStudy {
 			System.out.println("The Stall is currently exisitng");
 		}
 
-		
 	}
 //	public static void viewStall(ArrayList<stall>stallList) {
-	//	Helper.line(80, "-");
-		//System.out.println("VIEW ALL STALL");
-		//Helper.line(80, "-");
-		
-		//String output= String.format("%-10s\n", "NAME");
-		
-		//for (stall s: stallList) {
-			//output += String.format("%-10s \n", s.getStallName());
-		//}
-		//System.out.println(output);
-	//}
+	// Helper.line(80, "-");
+	// System.out.println("VIEW ALL STALL");
+	// Helper.line(80, "-");
+
+	// String output= String.format("%-10s\n", "NAME");
+
+	// for (stall s: stallList) {
+	// output += String.format("%-10s \n", s.getStallName());
+	// }
+	// System.out.println(output);
+	// }
 	public static String retrieveAllstall(ArrayList<stall> stallList) {
 		String output = "";
 
 		for (int i = 0; i < stallList.size(); i++) {
 
 			output += String.format("%-10s \n", stallList.get(i).getStallName());
-					
+
 		}
 		return output;
 	}
+
 	public static void viewAllstall(ArrayList<stall> stallList) {
 		C206_CaseStudy.setHeader("STALL");
 		String output = String.format("%-10s\n", "NAME");
-		 output += retrieveAllstall(stallList);	
+		output += retrieveAllstall(stallList);
 		System.out.println(output);
 	}
-	
+
 	public static void deleteStall(ArrayList<stall> stallList) {
 		Helper.line(80, "-");
 		System.out.println("DELETE STALL");
 		Helper.line(80, "-");
-		
-		String stallname= Helper.readString("Enter Stall Name to delete > ");
+
+		String stallname = Helper.readString("Enter Stall Name to delete > ");
 		char confirm = Helper.readChar("Are you sure (Y/N)> ");
-		
-		for(int i =0; i < stallList.size(); i++) {
-			if(stallname == stallList.get(i).getStallName() && confirm == 'Y' || confirm == 'y') {
+
+		for (int i = 0; i < stallList.size(); i++) {
+			if (stallname == stallList.get(i).getStallName() && confirm == 'Y' || confirm == 'y') {
 				stallList.remove(i);
 				System.out.println(stallname + " has been successfully deleted");
-				
+
 			}
 		}
 	}
-	
+
 	public static void foodItemsFunction() {
 		Helper.line(80, "-");
 		System.out.println("FOOD ITEMS IN MENU");
@@ -316,8 +316,7 @@ public class C206_CaseStudy {
 //		System.out.println(output);
 //
 //	}
-	
-	
+
 	public static String retrieveAllFoodItems(ArrayList<foodItems> foodItemList) {
 		String output = "";
 
@@ -328,17 +327,13 @@ public class C206_CaseStudy {
 		}
 		return output;
 	}
-	
+
 	public static void viewAllFoodItems(ArrayList<foodItems> foodItemList) {
 		C206_CaseStudy.setHeader("VIEW FOOD ITEMS IN MENU");
 		String output = String.format("%-10s %-10s\n", "NAME", "SELLING PRICE");
-		 output += retrieveAllFoodItems(foodItemList);	
+		output += retrieveAllFoodItems(foodItemList);
 		System.out.println(output);
 	}
-	
-	
-	
-	
 
 	public static void deleteFoodItems(ArrayList<foodItems> foodItemList) {
 		Helper.line(80, "-");
@@ -372,21 +367,16 @@ public class C206_CaseStudy {
 			System.out.println("New Ingredients has not been added into the Purchases Order!");
 		}
 
-		else 
-		{
-			for (int i = 0; i < PurchaseOrdersList.size(); i++) 
-			{
-				if (PurchaseOrdersList.get(i).getStallName().contains(stallName)) 
-				{	
+		else {
+			for (int i = 0; i < PurchaseOrdersList.size(); i++) {
+				if (PurchaseOrdersList.get(i).getStallName().contains(stallName)) {
 					count++;
 				}
 			}
 			if (count < 8) {
 				PurchaseOrdersList.add(new PurchaseOrders(stallName, ingredients, quantity));
 				System.out.println("New Ingredients has been successfully added into the Purchases Order!");
-			} 
-			else 
-			{
+			} else {
 				System.out.println("Exceeded the number of purchase order for this week!");
 			}
 		}
@@ -429,5 +419,3 @@ public class C206_CaseStudy {
 		}
 	}
 }
-
-

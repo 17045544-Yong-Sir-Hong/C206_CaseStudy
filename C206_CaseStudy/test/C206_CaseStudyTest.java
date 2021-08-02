@@ -16,6 +16,7 @@ public class C206_CaseStudyTest {
 	private ArrayList<stall> stallList;
 	private Poffer po1;
 	private Poffer po2;
+	private Poffer po3;
 	private ArrayList<Poffer> PofferList;
 	
 	private ArrayList<PurchaseOrders> PurchaseOrdersList;
@@ -51,7 +52,8 @@ public class C206_CaseStudyTest {
 
 		po1 = new Poffer("Chicken", 3, "Chicken");
 		po2 = new Poffer("Duck", 6, "Duck");
-		
+		po3 = new Poffer("Chicken rice", 4, "Chicken");
+		PofferList = new ArrayList<Poffer>();
 		
 	}
 
@@ -209,17 +211,85 @@ public class C206_CaseStudyTest {
 	
 	@Test
 	public void testaddPoffer() {
-		
+		  // Item list is not null, so that can add a new item - boundary 
+		  assertNotNull("Check if there is valid foodItems arraylist to add to", PofferList); 
+
+		  // normal
+		  PofferList.add(po1); 
+		  // no duplicate stall name in the array - normal
+		  assertEquals("check if there is no duplicate stall name in the array list", "Chicken", po1.getStallName());
+		  assertNotEquals("check if there is no duplicate stall name in the array list", "Chicken", po2.getStallName());
+		  //Given an empty list, after adding 1 item, the size of the list is 1 - normal 
+		  assertEquals("Check that foodItems arraylist size is 1", 1, PofferList.size()); 
+		  //The item just added is the same as the first item of the list 
+		  assertSame("Check that foodItems is added", po1, PofferList.get(0)); 
+		  
+		  // normal 
+		  PofferList.add(po2); 
+		  // no duplicate stall name in the array - normal
+		  assertEquals("check if there is no duplicate stall name in the array list", "Duck", po2.getStallName());
+		  assertNotEquals("check if there is no duplicate stall name in the array list", "Duck", po1.getStallName());
+		  //Add another item. test The size of the list is 2?
+		  assertEquals("Check that foodItems arraylist size is 2", 2, PofferList.size());
+		  //The item just added is the same as the second item of the list 
+		  assertSame("Check that foodItems is added", po2, PofferList.get(1)); 
+		  
+		  // error 
+		  PofferList.add(po3); 
+		  // test if there is duplicate stall name in the array - error
+		  assertEquals("check if there is no duplicate stall name in the array list", po1.getStallName(), po3.getStallName());
+		  //Add another item. test The size of the list is 3?
+		  assertEquals("Check that foodItems arraylist size is 3", 3, PofferList.size());
+		  //The item just added is the same as the third item of the list 
+		  assertSame("Check that foodItems is added", po3, PofferList.get(2)); 
 	}
 	
 	@Test
-	public void testviewPoffer() {
+	public void testretrieveAllPoffer() {
+		// Test if Item list is not null but empty, so that can add a new item
+		assertNotNull("Test if there is valid Promotion offer arraylist to add to", PofferList); 
+		
+		//test if the list of Promotion offer retrieved from the case study is empty
+		String allPoffer= C206_CaseStudy.retrieveAllPoffer(PofferList); 
+		String testOutput = "";
+		assertEquals("Check that ViewAllPofferlist", testOutput, allPoffer); 
+				
+		//Given an empty list, after adding 2 items, test if the size of the list is 2
+		PofferList.add(po1);
+		PofferList.add(po2);
+		assertEquals("Test if that Promotion offer arraylist size is 2?", 2, PofferList.size());
+		
+		//test if the expected output string same as the list of Promotion offer retrieved from the case study
+		allPoffer= C206_CaseStudy.retrieveAllPoffer(PofferList);
+
+		testOutput = String.format("%-10s $%-19d %-10s\n", "Chicken", 3, "Chicken");
+		testOutput += String.format("%-10s $%-19d %-10s\n", "Duck", 6, "Duck");
+	
+		assertEquals("Check that ViewAllPofferlist", testOutput, allPoffer);
 		
 	}
 	
 	@Test
 	public void testdeletePoffer() {
+		PofferList.add(po1);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		assertEquals("Check that Promotion Offer arraylist size is 1", 1, PofferList.size());
+		assertSame("Check that Promotion Offer is added", po1, PofferList.get(0));
 		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		PofferList.add(po2);
+		assertEquals("Check that Promotion Offer arraylist size is 2", 2, PofferList.size());
+		assertSame("Check that Promotion Offer is added", po2, PofferList.get(1));
+		
+		//Delete item from Promotion Offer List. test The size of the list is 1? -normal
+		PofferList.remove(1);
+		assertEquals("Check that Promotion Offer arraylist size is 1", 1, PofferList.size());
+		
+		//Delete item from Promotion Offer List. test The size of the list is 0? -normal
+		PofferList.remove(0);
+		assertEquals("Check that Promotion Offer arraylist size is 0", 0, PofferList.size());
 	}
 	
 	@Test
@@ -303,7 +373,10 @@ public class C206_CaseStudyTest {
 		purchaseOrder1 = null;
 		purchaseOrder2 = null;
 		purchaseOrder3 = null;
-		
+		po1 = null;
+		po2 = null;
+		po3 = null;
+	
 	}
 
 }
