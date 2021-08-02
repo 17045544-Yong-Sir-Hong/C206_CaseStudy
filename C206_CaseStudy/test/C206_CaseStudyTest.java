@@ -16,6 +16,11 @@ public class C206_CaseStudyTest {
 	private Poffer po2;
 	private ArrayList<Poffer> PofferList;
 	
+	private ArrayList<PurchaseOrders> PurchaseOrdersList;
+	private PurchaseOrders purchaseOrder1;
+	private PurchaseOrders purchaseOrder2;
+	
+	
 	public C206_CaseStudyTest() {
 		super();
 	}
@@ -27,8 +32,18 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
+<<<<<<< HEAD
 		stallList = new ArrayList<stall>();
+=======
 		
+>>>>>>> branch 'master' of https://github.com/17045544-Yong-Sir-Hong/C206_CaseStudy.git
+		
+		
+		
+		purchaseOrder1 = new PurchaseOrders("Test1", "Eggs", 20);
+		purchaseOrder2 = new PurchaseOrders("Test2", "Rice", 20);
+		PurchaseOrdersList= new ArrayList<PurchaseOrders>();
+
 		po1 = new Poffer("Chicken", 3, "Chicken");
 		po2 = new Poffer("Duck", 6, "Duck");
 		
@@ -58,7 +73,6 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testAddFoodItems() {
 		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid foodItems arraylist to add to", foodItemList);
 		
 		// Ensure that the Selling Price entered must be integer & between 3 to 15
 		
@@ -69,6 +83,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size());
 		assertSame("Check that foodItems is added", ft1, foodItemList.get(0));
 		
+		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
 		C206_CaseStudy.addFoodItems(foodItemList);
@@ -77,7 +92,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testViewFoodItems() {
+	public void testRetrieveAllFoodItems() { 
 		
 	}
 	
@@ -101,11 +116,27 @@ public class C206_CaseStudyTest {
 		
 	}
 	
+	
+	public void testAddPurchasesOrder()
+	{
+		
+	}
+	
+	public void testViewPurchasesOrder()
+	{
+		
+	}
+	
+	public void testdeletePurchasesOrder()
+	{
+		
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		ft1 = null;
 		ft2 = null;
 		foodItemList = null;
 	}
-		
+
 }
