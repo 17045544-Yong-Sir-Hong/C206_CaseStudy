@@ -197,6 +197,7 @@ public class C206_CaseStudyTest {
 		assertSame("Check that PurchaseOrder is added", purchaseOrder3, PurchaseOrdersList.get(2));
 		
 	}
+	
 	@Test
 	public void testViewPurchasesOrder()
 	{
@@ -204,6 +205,7 @@ public class C206_CaseStudyTest {
 		PurchaseOrdersList.add(purchaseOrder2);
 		C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
 	}
+	
 	@Test
 	public void testdeletePurchasesOrder()
 	{
