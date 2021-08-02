@@ -96,7 +96,8 @@ public class C206_CaseStudyTest {
 		
 		testoutput = String.format("%-10s ", "drinks");
 		testoutput += String.format("%-10s", "Korean Food");
-		assertEquals("Check that ViewAllstallList", testoutput,allstall);
+		
+		C206_CaseStudy.viewAllstall(stallList);
 		
 		
 		
