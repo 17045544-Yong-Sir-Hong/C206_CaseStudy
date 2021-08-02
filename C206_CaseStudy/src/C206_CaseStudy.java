@@ -270,10 +270,12 @@ public class C206_CaseStudy {
 	}
 
 	public static void addFoodItems(ArrayList<foodItems> foodItemList) {
-		C206_CaseStudy.setHeader("ADD FOOD ITEMS IN MENU");
+		Helper.line(80, "-");
+		System.out.println("ADD FOOD ITEMS TO MENU");
+		Helper.line(80, "-");
 		String name = Helper.readString("Enter New Food Item Name > ");
 		Integer price = Helper.readInt("Enter New Food Item Selling Price ($3 to $15) > $");
-		
+
 		if (!(name.isEmpty()) && price >= 3 && price <= 15) {
 			foodItemList.add(new foodItems(name, price));
 			System.out.println("New food item has been successfully added into the menu!");
@@ -283,8 +285,6 @@ public class C206_CaseStudy {
 		}
 
 	}
-	
-	
 
 //	public static void viewFoodItems(ArrayList<foodItems> foodItemList) {
 //		Helper.line(80, "-");
