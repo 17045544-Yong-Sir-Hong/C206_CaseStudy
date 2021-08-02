@@ -163,10 +163,12 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testViewPurchasesOrder()
 	{
+		
 		PurchaseOrdersList.add(purchaseOrder1);
 		PurchaseOrdersList.add(purchaseOrder2);
 		C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
 	}
+	
 	@Test
 	public void testdeletePurchasesOrder()
 	{
@@ -204,4 +206,5 @@ public class C206_CaseStudyTest {
 	}
 
 }
+
 
