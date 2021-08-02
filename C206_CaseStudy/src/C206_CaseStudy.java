@@ -57,7 +57,7 @@ public class C206_CaseStudy {
 					if (function == 1) {
 						addFoodItems(foodItemList);
 					} else if (function == 2) {
-						viewFoodItems(foodItemList);
+						viewAllFoodItems(foodItemList);
 					} else if (function == 3) {
 						deleteFoodItems(foodItemList);
 					} else {
@@ -286,19 +286,42 @@ public class C206_CaseStudy {
 
 	}
 
-	public static void viewFoodItems(ArrayList<foodItems> foodItemList) {
-		Helper.line(80, "-");
-		System.out.println("VIEW FOOD ITEMS IN MENU");
-		Helper.line(80, "-");
+//	public static void viewFoodItems(ArrayList<foodItems> foodItemList) {
+//		Helper.line(80, "-");
+//		System.out.println("VIEW FOOD ITEMS IN MENU");
+//		Helper.line(80, "-");
+//
+//		String output = String.format("%-10s %-10s\n", "NAME", "SELLING PRICE");
+//
+//		for (foodItems ft : foodItemList) {
+//			output += String.format("%-10s $%-10d\n", ft.getName(), ft.getSellingPrice());
+//		}
+//		System.out.println(output);
+//
+//	}
+	
+	
+	public static String retrieveAllFoodItems(ArrayList<foodItems> foodItemList) {
+		String output = "";
 
-		String output = String.format("%-10s %-10s\n", "NAME", "SELLING PRICE");
+		for (int i = 0; i < foodItemList.size(); i++) {
 
-		for (foodItems ft : foodItemList) {
-			output += String.format("%-10s $%-10d\n", ft.getName(), ft.getSellingPrice());
+			output += String.format("%-10s $%-10d\n", foodItemList.get(i).getName(),
+					foodItemList.get(i).getSellingPrice());
 		}
-		System.out.println(output);
-
+		return output;
 	}
+	
+	public static void viewAllFoodItems(ArrayList<foodItems> foodItemList) {
+		C206_CaseStudy.setHeader("VIEW FOOD ITEMS IN MENU");
+		String output = String.format("%-10s %-10s\n", "NAME", "SELLING PRICE");
+		 output += retrieveAllFoodItems(foodItemList);	
+		System.out.println(output);
+	}
+	
+	
+	
+	
 
 	public static void deleteFoodItems(ArrayList<foodItems> foodItemList) {
 		Helper.line(80, "-");

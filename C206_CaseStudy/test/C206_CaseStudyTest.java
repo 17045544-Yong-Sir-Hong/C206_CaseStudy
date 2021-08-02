@@ -36,7 +36,6 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testAddFoodItems() {
 		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid foodItems arraylist to add to", foodItemList);
 		
 		// Ensure that the Selling Price entered must be integer & between 3 to 15
 		
