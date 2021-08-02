@@ -30,7 +30,7 @@ public class C206_CaseStudyTest {
 	public void setUp() throws Exception {
 		// prepare test data
 		ft1 = new foodItems("Curry", 3);
-		ft2 = new foodItems("Soup", 15);
+		ft2 = new foodItems("Soup", 10);
 		
 		foodItemList = new ArrayList<foodItems>();
 
@@ -77,17 +77,25 @@ public class C206_CaseStudyTest {
 		
 	  // Item list is not null, so that can add a new item - boundary 
 	  assertNotNull("Check if there is valid foodItems arraylist to add to", foodItemList); 
-	  // Ensure that the Selling Price entered must be integer & between 3 to 15 - Boundary
-	  //Given an empty list, after adding 1 item, the size of the list is 1 - normal 
-	  //The item just added is as same as the first item of the list 
+
+	  // boundary
 	  foodItemList.add(ft1); 
-	  for (int i = 0; i < foodItemList.size(); i++) {
-		  assertEquals("Check that new foodItems selling price is between $3 to $15", foodItemList.get(i).getSellingPrice() >= 3 && foodItemList.get(i).getSellingPrice() <= 15);
-	
-	  }
-	   
+	  // Selling Price entered is 3 (integer) - boundary
+	  assertEquals("Check that new foodItems selling price is between $3 to $15", 3, ft1.getSellingPrice());
+	  //Given an empty list, after adding 1 item, the size of the list is 1 - normal 
 	  assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size()); 
+	  //The item just added is the same as the first item of the list 
 	  assertSame("Check that foodItems is added", ft1, foodItemList.get(0)); 
+	  
+	  // normal 
+	  foodItemList.add(ft2); 
+	  // Selling Price entered is 10 (integer) - normal
+	  assertEquals("Check that new foodItems selling price is between $3 to $15", 10, ft2.getSellingPrice());
+	  //Add another item. test The size of the list is 2?
+	  assertEquals("Check that foodItems arraylist size is 2", 2, foodItemList.size());
+	  //The item just added is the same as the second item of the list 
+	  assertSame("Check that foodItems is added", ft2, foodItemList.get(1)); 
+	  
 	 }
 	
 	@Test
@@ -109,7 +117,7 @@ public class C206_CaseStudyTest {
 		allFoodItems = C206_CaseStudy.retrieveAllFoodItems(foodItemList);
 
 		testOutput = String.format("%-10s $%-10d\n", "Curry", 3);
-		testOutput += String.format("%-10s $%-10d\n", "Soup", 15);
+		testOutput += String.format("%-10s $%-10d\n", "Soup", 10);
 	
 		assertEquals("Check that ViewAllFoodItemlist", testOutput, allFoodItems);
 		
@@ -118,6 +126,35 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testDeleteFoodItems() {
 		
+		  // Item list is not null, so that can add a new item - boundary 
+		  assertNotNull("Check if there is valid foodItems arraylist to add to", foodItemList); 
+
+		  // boundary
+		  foodItemList.add(ft1); 
+		  // Selling Price entered is 3 (integer) - boundary
+		  assertEquals("Check that new foodItems selling price is between $3 to $15", 3, ft1.getSellingPrice());
+		  //Given an empty list, after adding 1 item, the size of the list is 1 - normal 
+		  assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size()); 
+		  //The item just added is the same as the first item of the list 
+		  assertSame("Check that foodItems is added", ft1, foodItemList.get(0)); 
+		  
+		  // normal 
+		  foodItemList.add(ft2); 
+		  // Selling Price entered is 10 (integer) - normal
+		  assertEquals("Check that new foodItems selling price is between $3 to $15", 10, ft2.getSellingPrice());
+		  //Add another item. Test the size of the list is 2?
+		  assertEquals("Check that foodItems arraylist size is 2", 2, foodItemList.size());
+		  //The item just added is the same as the second item of the list 
+		  assertSame("Check that foodItems is added", ft2, foodItemList.get(1)); 
+		  
+		  // Remove the last row food item in the arraylist
+		  foodItemList.remove(1);
+		  // after removing, the size of the list is 1 
+		  assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size()); 
+		  // Remove the second last row food item in the arraylist
+		  foodItemList.remove(0);
+		  // after removing, the size of the list is 0 (empty)
+		  assertEquals("Check that foodItems arraylist size is 0", 0, foodItemList.size()); 
 	}
 	
 	@Test
@@ -160,6 +197,7 @@ public class C206_CaseStudyTest {
 		assertSame("Check that PurchaseOrder is added", purchaseOrder3, PurchaseOrdersList.get(2));
 		
 	}
+	
 	@Test
 	public void testViewPurchasesOrder()
 	{
