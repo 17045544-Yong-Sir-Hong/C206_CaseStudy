@@ -41,7 +41,7 @@ public class C206_CaseStudy {
 					if (function == 1) {
 						addNewStall(stallList);
 					}else if (function ==2) {
-						viewStall(stallList);
+						viewAllstall(stallList);
 					}else if (function ==3) {
 						deleteStall(stallList);
 					}else {
