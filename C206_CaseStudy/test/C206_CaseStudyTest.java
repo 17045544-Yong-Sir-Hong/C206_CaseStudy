@@ -15,6 +15,11 @@ public class C206_CaseStudyTest {
 	private Poffer po2;
 	private ArrayList<Poffer> PofferList;
 	
+	private ArrayList<PurchaseOrders> PurchaseOrdersList;
+	private PurchaseOrders purchaseOrder1;
+	private PurchaseOrders purchaseOrder2;
+	
+	
 	public C206_CaseStudyTest() {
 		super();
 	}
@@ -27,6 +32,13 @@ public class C206_CaseStudyTest {
 		
 		foodItemList = new ArrayList<foodItems>();
 		
+		
+		
+		
+		purchaseOrder1 = new PurchaseOrders("Test1", "Eggs", 20);
+		purchaseOrder2 = new PurchaseOrders("Test2", "Rice", 20);
+		PurchaseOrdersList= new ArrayList<PurchaseOrders>();
+
 		po1 = new Poffer("Chicken", 3, "Chicken");
 		po2 = new Poffer("Duck", 6, "Duck");
 		
@@ -87,11 +99,27 @@ public class C206_CaseStudyTest {
 		
 	}
 	
+	
+	public void testAddPurchasesOrder()
+	{
+		
+	}
+	
+	public void testViewPurchasesOrder()
+	{
+		
+	}
+	
+	public void testdeletePurchasesOrder()
+	{
+		
+	}
+	
 	@After
 	public void tearDown() throws Exception {
 		ft1 = null;
 		ft2 = null;
 		foodItemList = null;
 	}
-		
+
 }
