@@ -47,6 +47,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size());
 		assertSame("Check that foodItems is added", ft1, foodItemList.get(0));
 		
+		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
 		C206_CaseStudy.addFoodItems(foodItemList);
