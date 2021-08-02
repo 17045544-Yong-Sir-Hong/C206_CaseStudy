@@ -11,6 +11,7 @@ public class C206_CaseStudyTest {
 	private foodItems ft1;
 	private foodItems ft2;
 	private ArrayList<foodItems> foodItemList;
+	private ArrayList<stall> stallList;
 	private Poffer po1;
 	private Poffer po2;
 	private ArrayList<Poffer> PofferList;
@@ -31,7 +32,11 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
+
+		stallList = new ArrayList<stall>();
+
 		
+
 		
 		
 		
@@ -52,6 +57,18 @@ public class C206_CaseStudyTest {
 		//fail("Not yet implemented"); 
 		assertTrue("C206_CaseStudy_SampleTest ",true);
 	}
+	@Test
+	public void testaddNewStall() {
+		
+	}
+	@Test
+	public void testviewStall() {
+		
+	}
+	public void testdeleteStall() {
+		
+	}
+	
 	
 	@Test
 	public void testAddFoodItems() {
@@ -117,17 +134,24 @@ public class C206_CaseStudyTest {
 		
 	}
 	
-	
+	@Test
 	public void testAddPurchasesOrder()
 	{
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid PurchasesOrder arraylist to add to", PurchaseOrdersList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		PurchaseOrdersList.add(purchaseOrder1);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
 		
 	}
-	
+	@Test
 	public void testViewPurchasesOrder()
 	{
 		
 	}
-	
+	@Test
 	public void testdeletePurchasesOrder()
 	{
 		

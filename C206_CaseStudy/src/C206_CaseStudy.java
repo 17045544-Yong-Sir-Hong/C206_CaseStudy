@@ -344,7 +344,7 @@ public class C206_CaseStudy {
 
 	}
 
-	private static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+	public static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
 		String stallName = Helper.readString("Enter Stall Name > ");
 		String ingredients = Helper.readString("Enter ingredients to buy > ");
 		int quantity = Helper.readInt("Enter the number of quantity to buy >");
@@ -375,7 +375,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	private static void ViewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+	public static void ViewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
 
 		Helper.line(80, "-");
 		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
@@ -390,7 +390,7 @@ public class C206_CaseStudy {
 
 	}
 
-	private static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+	public static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
 
 		Helper.line(80, "-");
 		System.out.println("DELETE PURCHASE ORDER OF INGREDIENTS");
@@ -412,4 +412,5 @@ public class C206_CaseStudy {
 		}
 	}
 }
+
 
