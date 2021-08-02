@@ -148,7 +148,7 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that PurchaseOrder arraylist size is 2", 2, PurchaseOrdersList.size());
 		assertSame("Check that PurchaseOrder is added", purchaseOrder2, PurchaseOrdersList.get(1));
 		
-		//Add another item. test The size of the list is 2? -normal
+		//Add another item. test The size of the list is 2? -error
 		//The item just added is as same as the second item of the list
 		PurchaseOrdersList.add(purchaseOrder3);
 		assertEquals("Check that PurchaseOrder arraylist size is 3", 3, PurchaseOrdersList.size());
@@ -158,11 +158,28 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testViewPurchasesOrder()
 	{
-
+		PurchaseOrdersList.add(purchaseOrder1);
+		PurchaseOrdersList.add(purchaseOrder2);
+		C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
 	}
 	@Test
 	public void testdeletePurchasesOrder()
 	{
+		PurchaseOrdersList.add(purchaseOrder1);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
+		
+		PurchaseOrdersList.add(purchaseOrder2);
+		assertEquals("Check that PurchaseOrder arraylist size is 2", 2, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder2, PurchaseOrdersList.get(1));
+		
+		PurchaseOrdersList.remove(1);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+		PurchaseOrdersList.remove(0);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 0, PurchaseOrdersList.size());
+		
+
+		
 		
 	}
 	
