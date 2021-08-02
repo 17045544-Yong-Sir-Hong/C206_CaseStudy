@@ -74,13 +74,18 @@ public class C206_CaseStudyTest {
 	
 	@Test 
 	 public void testAddFoodItems() { 
-	  // Ensure that the Selling Price entered must be integer & between 3 to 15 
-	   
+		
 	  // Item list is not null, so that can add a new item - boundary 
 	  assertNotNull("Check if there is valid foodItems arraylist to add to", foodItemList); 
+	  // Ensure that the Selling Price entered must be integer & between 3 to 15 - Boundary
 	  //Given an empty list, after adding 1 item, the size of the list is 1 - normal 
 	  //The item just added is as same as the first item of the list 
 	  foodItemList.add(ft1); 
+	  for (int i = 0; i < foodItemList.size(); i++) {
+		  assertEquals("Check that new foodItems selling price is between $3 to $15", foodItemList.get(i).getSellingPrice() >= 3 && foodItemList.get(i).getSellingPrice() <= 15);
+	
+	  }
+	   
 	  assertEquals("Check that foodItems arraylist size is 1", 1, foodItemList.size()); 
 	  assertSame("Check that foodItems is added", ft1, foodItemList.get(0)); 
 	 }
@@ -98,7 +103,7 @@ public class C206_CaseStudyTest {
 		//Given an empty list, after adding 2 items, test if the size of the list is 2
 		foodItemList.add(ft1);
 		foodItemList.add(ft2);
-		assertEquals("Test if that Camcorder arraylist size is 2?", 2, foodItemList.size());
+		assertEquals("Test if that foodItems arraylist size is 2?", 2, foodItemList.size());
 		
 		//test if the expected output string same as the list of fooditems retrieved from the case study
 		allFoodItems = C206_CaseStudy.retrieveAllFoodItems(foodItemList);
