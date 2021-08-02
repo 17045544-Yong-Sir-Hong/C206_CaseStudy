@@ -12,6 +12,11 @@ public class C206_CaseStudyTest {
 	private foodItems ft2;
 	private ArrayList<foodItems> foodItemList;
 	
+	private ArrayList<PurchaseOrders> PurchaseOrdersList;
+	private PurchaseOrders po1;
+	private PurchaseOrders po2;
+	
+	
 	public C206_CaseStudyTest() {
 		super();
 	}
@@ -23,6 +28,14 @@ public class C206_CaseStudyTest {
 		ft2 = new foodItems("Soup", 15);
 		
 		foodItemList = new ArrayList<foodItems>();
+		
+		
+		
+		
+		po1 = new PurchaseOrders("Test1", "Eggs", 20);
+		po1 = new PurchaseOrders("Test2", "Rice", 20);
+		PurchaseOrdersList= new ArrayList<PurchaseOrders>();
+
 	}
 
 
@@ -70,17 +83,5 @@ public class C206_CaseStudyTest {
 		ft2 = null;
 		foodItemList = null;
 	}
-	
-	public void testaddPoffer() {
-		
-	}
-	
-	public void testviewPoffer() {
-		
-	}
-	
-	public void testdeletePoffer() {
-		
-	}
-	
+
 }
