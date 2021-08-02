@@ -71,5 +71,17 @@ public class C206_CaseStudyTest {
 		ft2 = null;
 		foodItemList = null;
 	}
-
+	
+	public void testaddPoffer() {
+		
+	}
+	
+	public void testviewPoffer() {
+		
+	}
+	
+	public void testdeletePoffer() {
+		
+	}
+	
 }
