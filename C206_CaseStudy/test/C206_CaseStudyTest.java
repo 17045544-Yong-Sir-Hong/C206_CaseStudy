@@ -203,7 +203,13 @@ public class C206_CaseStudyTest {
 	{
 		
 		PurchaseOrdersList.add(purchaseOrder1);
+		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
+		
 		PurchaseOrdersList.add(purchaseOrder2);
+		assertEquals("Check that PurchaseOrder arraylist size is 2", 2, PurchaseOrdersList.size());
+		assertSame("Check that PurchaseOrder is added", purchaseOrder2, PurchaseOrdersList.get(1));
+		
 		C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
 	}
 	
