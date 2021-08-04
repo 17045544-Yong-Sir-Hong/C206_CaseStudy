@@ -330,10 +330,16 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 
 		for (int i = 0; i < foodItemList.size(); i++) {
-			if (foodItemList.get(i).getName().equals(name) && confirm == 'Y') {
-				foodItemList.remove(i);
-				System.out.println(name + " has been successfully deleted!");
-
+			if (foodItemList.get(i).getName().equals(name)) {
+				if (confirm == 'Y') {
+					foodItemList.remove(i);
+					System.out.println(name + " has been successfully deleted!");
+			    } else {
+			    	System.out.println("Delete Cancelled!");
+			    }
+				
+			} else {
+				System.out.println("Delete Failed!");
 			}
 		}
 
