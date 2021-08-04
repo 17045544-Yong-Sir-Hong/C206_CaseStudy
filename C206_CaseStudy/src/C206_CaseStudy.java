@@ -298,24 +298,10 @@ public class C206_CaseStudy {
 			System.out.println("New food item has been successfully added into the menu!");
 
 		} else {
-			System.out.println("Price MUST be between $3 to $15");
+			System.out.println("Please enter a selling price between $3 to $15");
 		}
 
 	}
-
-//	public static void viewFoodItems(ArrayList<foodItems> foodItemList) {
-//		Helper.line(80, "-");
-//		System.out.println("VIEW FOOD ITEMS IN MENU");
-//		Helper.line(80, "-");
-//
-//		String output = String.format("%-10s %-10s\n", "NAME", "SELLING PRICE");
-//
-//		for (foodItems ft : foodItemList) {
-//			output += String.format("%-10s $%-10d\n", ft.getName(), ft.getSellingPrice());
-//		}
-//		System.out.println(output);
-//
-//	}
 
 	public static String retrieveAllFoodItems(ArrayList<foodItems> foodItemList) {
 		String output = "";
@@ -346,9 +332,6 @@ public class C206_CaseStudy {
 		for (int i = 0; i < foodItemList.size(); i++) {
 			if (foodItemList.get(i).getName().equals(name) && confirm == 'Y') {
 				foodItemList.remove(i);
-
-				System.out.println(name + " is has been successfully deleted!");
-
 				System.out.println(name + " has been successfully deleted!");
 
 			}
