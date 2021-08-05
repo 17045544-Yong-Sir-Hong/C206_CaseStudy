@@ -410,18 +410,46 @@ public class C206_CaseStudy {
 		Helper.line(80, "-");
 		System.out.println("DELETE PURCHASE ORDER OF INGREDIENTS");
 		Helper.line(80, "-");
+		boolean isValid = false;
+		boolean isDeleted = false;
 
 		String stallName = Helper.readString("Enter Stall Name to delete > ");
 		String ingredientsName = Helper.readString("Enter Ingredients to delete > ");
-		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 
 		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
 			if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
+				char confirm = Helper.readChar("Are you sure (Y/N) > ");
+				
+				while(confirm != 'y' && confirm != 'Y' && confirm != 'n' && confirm != 'N')
+				{
+					confirm = Helper.readChar("Please enter (Y/N) > ");
+				}
+				
 				if (confirm == 'Y' || confirm == 'y') {
 					PurchaseOrdersList.remove(i);
-					System.out.println(stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");
+					isDeleted = true;
+					isValid = true;
+				}
+				else if(confirm == 'N' || confirm == 'n')
+				{
+					isValid = true;
 				}
 			}
+		}
+		if (isValid == true)
+		{
+			if(isDeleted == true)
+			{
+				System.out.println(stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");
+			}
+			else
+			{
+				System.out.println(stallName + " Purchase Order of " + ingredientsName + " will not be deleted!");
+			}
+		}
+		else
+		{
+			System.out.println("There is no existing stall or ingredients in the system!");
 		}
 	}
 }
