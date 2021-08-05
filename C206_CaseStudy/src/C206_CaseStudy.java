@@ -198,9 +198,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void canteenAdministratorMenu() {
-		Helper.line(80, "-");
-		System.out.println("CANTEEN ADMINISTRATOR");
-		Helper.line(80, "-");
+		C206_CaseStudy.setHeader("CANTEEN ADMINISTRATOR");
 		System.out.println("1. Stall");
 		System.out.println("2. Food Items in Menu \n");
 	}
@@ -267,18 +265,14 @@ public class C206_CaseStudy {
 	}
 
 	public static void foodItemsFunction() {
-		Helper.line(80, "-");
-		System.out.println("FOOD ITEMS IN MENU");
-		Helper.line(80, "-");
+		C206_CaseStudy.setHeader("FOOD ITEMS IN MENU");
 		System.out.println("1. Add Food Items to Menu");
 		System.out.println("2. View Food Items in Menu");
 		System.out.println("3. Delete Food Items in Menu \n");
 	}
 
 	public static void addFoodItems(ArrayList<foodItems> foodItemList) {
-		Helper.line(80, "-");
-		System.out.println("ADD FOOD ITEMS TO MENU");
-		Helper.line(80, "-");
+		C206_CaseStudy.setHeader("ADD FOOD ITEMS TO MENU");
 		String name = Helper.readString("Enter New Food Item Name > ");
 		Integer price = Helper.readInt("Enter New Food Item Selling Price ($3 to $15) > $");
 
@@ -311,9 +305,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void deleteFoodItems(ArrayList<foodItems> foodItemList) {
-		Helper.line(80, "-");
-		System.out.println("DELETE FOOD ITEMS IN MENU");
-		Helper.line(80, "-");
+		C206_CaseStudy.setHeader("DELETE FOOD ITEMS IN MENU");
 
 		String name = Helper.readString("Enter food item name to delete > ");
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
