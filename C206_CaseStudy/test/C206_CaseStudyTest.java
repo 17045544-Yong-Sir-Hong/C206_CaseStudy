@@ -344,7 +344,7 @@ public class C206_CaseStudyTest {
 		assertSame("Check that PurchaseOrder is added", purchaseOrder2, PurchaseOrdersList.get(1));
 		
 		//Test PurchaseOrdersList can view purchases order
-		C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
+		//C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
 	}
 	
 	@Test
