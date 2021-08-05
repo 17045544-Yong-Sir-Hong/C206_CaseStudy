@@ -359,18 +359,24 @@ public class C206_CaseStudy {
 		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
 		Helper.line(80, "-");
 		String storeName = Helper.readString("Enter the Stall Name to view the Purchases Order > ");
+		boolean isValid = false;
 
 		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
 
-		for (PurchaseOrders pO : PurchaseOrdersList) {
-			if(pO.getStallName().contains(storeName))
+
+		
+		for (PurchaseOrders pO : PurchaseOrdersList) 
+		{
+			if(pO.getStallName().contentEquals(storeName))
 			{
 				output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
+				isValid = true;
 			}
-			else
-			{
+		}
+		
+		if(isValid == false)
+		{
 				output = "Stall Name cannot be found in the system!";
-			}
 		}
 		System.out.println(output);
 
