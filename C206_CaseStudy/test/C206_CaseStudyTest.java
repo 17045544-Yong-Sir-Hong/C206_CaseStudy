@@ -145,7 +145,7 @@ public class C206_CaseStudyTest {
 	  foodItemList.add(ft2); 
 	  // Selling Price entered is 10 (integer) - normal
 	  assertEquals("Check that new foodItems selling price is between $3 to $15", 10, ft2.getSellingPrice());
-	  //Add another item. test The size of the list is 2?
+	  //Add another item. test The size of the list is 2? - normal
 	  assertEquals("Check that foodItems arraylist size is 2", 2, foodItemList.size());
 	  //The item just added is the same as the second item of the list 
 	  assertSame("Check that foodItems is added", ft2, foodItemList.get(1)); 
