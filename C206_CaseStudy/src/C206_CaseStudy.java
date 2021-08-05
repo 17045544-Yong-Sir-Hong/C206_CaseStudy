@@ -86,7 +86,7 @@ public class C206_CaseStudy {
 					if (function == 1) {
 						addPurchasesOrder(PurchaseOrdersList);
 					} else if (function == 2) {
-						ViewPurchasesOrder(PurchaseOrdersList);
+						viewPurchasesOrder(PurchaseOrdersList);
 					} else if (function == 3) {
 						deletePurchasesOrder(PurchaseOrdersList);
 					} else {
@@ -380,7 +380,7 @@ public class C206_CaseStudy {
 		}
 	}
 
-	public static void ViewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+	public static void viewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
 
 		Helper.line(80, "-");
 		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
