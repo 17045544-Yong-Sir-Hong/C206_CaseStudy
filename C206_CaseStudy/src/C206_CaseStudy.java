@@ -142,7 +142,7 @@ public class C206_CaseStudy {
 	}
 
 	public static void addPoffer(ArrayList<Poffer> pofferList) {
-		setHeader("ADD PROMOTION OFFERS TO MENU");
+		setHeader("ADD PROMOTION OFFERS MENU");
 		String name = Helper.readString("Enter New Promotion Offer Name > ");
 		Integer price = Helper.readInt("Enter New Promotion Offer Selling Price ($3 to $15) > $");
 		String stallname = Helper.readString("Enter Stall Name > ");
@@ -178,14 +178,14 @@ public class C206_CaseStudy {
 	}
 
 	public static void viewAllPoffer(ArrayList<Poffer> PofferList) {
-		setHeader("VIEW PROMOTION OFFERS IN MENU");
+		setHeader("VIEW PROMOTION OFFERS MENU");
 		String output = String.format("%-10s %-20s %-10s\n", "NAME", "SELLING PRICE", "STALL NAME");
 		output += retrieveAllPoffer(PofferList);
 		System.out.println(output);
 	}
 
 	public static void deletePoffer(ArrayList<Poffer> pofferList) {
-		setHeader("DELETE PROMOTION OFFERS IN MENU");
+		setHeader("DELETE PROMOTION OFFERS MENU");
 		String name = Helper.readString("Enter promotion offer name to delete > ");
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 
@@ -359,24 +359,18 @@ public class C206_CaseStudy {
 		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
 		Helper.line(80, "-");
 		String storeName = Helper.readString("Enter the Stall Name to view the Purchases Order > ");
-		boolean isValid = false;
 
 		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
 
-
-		
-		for (PurchaseOrders pO : PurchaseOrdersList) 
-		{
-			if(pO.getStallName().contentEquals(storeName))
+		for (PurchaseOrders pO : PurchaseOrdersList) {
+			if(pO.getStallName().contains(storeName))
 			{
 				output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
-				isValid = true;
 			}
-		}
-		
-		if(isValid == false)
-		{
+			else
+			{
 				output = "Stall Name cannot be found in the system!";
+			}
 		}
 		System.out.println(output);
 
@@ -404,4 +398,3 @@ public class C206_CaseStudy {
 		}
 	}
 }
-
