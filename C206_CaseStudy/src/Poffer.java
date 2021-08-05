@@ -29,4 +29,12 @@ public class Poffer {
 	public String getStallName() {
 		return stallname;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setSellingPrice(int sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
 }

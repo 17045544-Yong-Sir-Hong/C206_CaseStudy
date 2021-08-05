@@ -99,17 +99,19 @@ public class C206_CaseStudy {
 					Helper.line(80, "-");
 					System.out.println("1. Add Promotion Offers");
 					System.out.println("2. View Promotion Offers");
-					System.out.println("3. Delete Promotion Offers \n");
+					System.out.println("3. Delete Promotion Offers");
+					System.out.println("4. Update Promotion Offers\n");
 
 					int function = Helper.readInt("Enter option to select a function > ");
 
 					if (function == 1) {
 						C206_CaseStudy.addPoffer(pofferList);
 					} else if (function == 2) {
-
 						C206_CaseStudy.viewAllPoffer(pofferList);
 					} else if (function == 3) {
 						C206_CaseStudy.deletePoffer(pofferList);
+					} else if (function == 4) {
+						C206_CaseStudy.updatePoffer(pofferList);
 					} else {
 						System.out.println("Invalid function");
 					}
@@ -193,6 +195,27 @@ public class C206_CaseStudy {
 			if (pofferList.get(i).getName().equals(name) && confirm == 'Y' || confirm == 'y') {
 				pofferList.remove(i);
 				System.out.println(name + " has been successfully deleted!");
+			}
+		}
+	}
+
+	public static void updatePoffer(ArrayList<Poffer> pofferList) {
+		setHeader("UPDATE PROMOTION OFFERS MENU");
+		String name = Helper.readString("Enter promotion offer name to update > ");
+
+		for (int i = 0; i < pofferList.size(); i++) {
+			if (pofferList.get(i).getName().equals(name)) {
+				String newname = Helper.readString("Enter new promotion offer name > ");
+				int price = Helper.readInt("Enter new price of promotion offer > ");
+				if ((price >= 3 && price <= 15)) {
+					pofferList.get(i).setName(newname);
+					pofferList.get(i).setSellingPrice(price);
+					System.out.println("Promotion offer updated!");
+				} else {
+					System.out.println("Price MUST be between $3 to $15");
+				}
+			} else {
+				System.out.println("Name not found");
 			}
 		}
 	}
@@ -315,10 +338,10 @@ public class C206_CaseStudy {
 				if (confirm == 'Y') {
 					foodItemList.remove(i);
 					System.out.println(name + " has been successfully deleted!");
-			    } else {
-			    	System.out.println("Delete Cancelled!");
-			    }
-				
+				} else {
+					System.out.println("Delete Cancelled!");
+				}
+
 			} else {
 				System.out.println("Delete Failed!");
 				break;
@@ -363,12 +386,10 @@ public class C206_CaseStudy {
 		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
 
 		for (PurchaseOrders pO : PurchaseOrdersList) {
-			if(pO.getStallName().contains(storeName))
-			{
-				output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
-			}
-			else
-			{
+			if (pO.getStallName().contains(storeName)) {
+				output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(),
+						pO.getQuantity());
+			} else {
 				output = "Stall Name cannot be found in the system!";
 			}
 		}
