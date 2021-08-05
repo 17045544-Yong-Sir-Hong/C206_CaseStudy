@@ -156,9 +156,6 @@ public class C206_CaseStudyTest {
 	  //Do not add this item. test The size of the list is 2 (remain the same)?
 	  assertEquals("Check that foodItems arraylist size is 2", 2, foodItemList.size());
 	  
-	  //Test to ensure that all food items are successfully added into foodItemList
-	  C206_CaseStudy.viewAllFoodItems(foodItemList);
-	  
 	 }
 	
 	@Test
@@ -183,9 +180,6 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-10s $%-10d\n", "Soup", 10);
 	
 		assertEquals("Check that ViewAllFoodItemlist", testOutput, allFoodItems);
-		
-		//Test to check if able to view food items in foodItemList
-		C206_CaseStudy.viewAllFoodItems(foodItemList);
 		
 	}
 	
@@ -222,9 +216,6 @@ public class C206_CaseStudyTest {
 		  foodItemList.remove(0);
 		  // after removing, the size of the list is 0 (empty)
 		  assertEquals("Check that foodItems arraylist size is 0", 0, foodItemList.size()); 
-		  
-		  //Test to see and ensure that foodItemList is empty
-		  C206_CaseStudy.viewAllFoodItems(foodItemList);
 			
 	}
 	
