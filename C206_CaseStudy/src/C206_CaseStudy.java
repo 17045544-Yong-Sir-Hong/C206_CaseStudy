@@ -219,29 +219,18 @@ public class C206_CaseStudy {
 		String stallName = Helper.readString("Enter New Stall Name >");
 		LocalDate today = LocalDate.now();
 		String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
-		System.out.println("Date of stall " + formattedDate);
+		System.out.println("Date of Stall >" + formattedDate);
 
 		if (!(stallList.contains(stallName)) && stallList.size() <= 10) {
 			stallList.add(new stall(stallName));
 
 			System.out.println("New Stall has been sucessfully added");
 		} else {
-			System.out.println("The Stall is currently exisitng");
+			System.out.println("The Stall is currently existng");
 		}
 
 	}
-//	public static void viewStall(ArrayList<stall>stallList) {
-	// Helper.line(80, "-");
-	// System.out.println("VIEW ALL STALL");
-	// Helper.line(80, "-");
 
-	// String output= String.format("%-10s\n", "NAME");
-
-	// for (stall s: stallList) {
-	// output += String.format("%-10s \n", s.getStallName());
-	// }
-	// System.out.println(output);
-	// }
 	public static String retrieveAllstall(ArrayList<stall> stallList) {
 		String output = "";
 
