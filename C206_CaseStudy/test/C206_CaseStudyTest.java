@@ -10,6 +10,7 @@ public class C206_CaseStudyTest {
 	
 	private foodItems ft1;
 	private foodItems ft2;
+	private foodItems ft3;
 	private ArrayList<foodItems> foodItemList;
 	private stall st1;
 	private stall st2;
@@ -34,6 +35,7 @@ public class C206_CaseStudyTest {
 		// prepare test data
 		ft1 = new foodItems("Curry", 3);
 		ft2 = new foodItems("Soup", 10);
+		ft3 = new foodItems("Cake", 20);
 		
 		foodItemList = new ArrayList<foodItems>();
 
@@ -148,6 +150,15 @@ public class C206_CaseStudyTest {
 	  //The item just added is the same as the second item of the list 
 	  assertSame("Check that foodItems is added", ft2, foodItemList.get(1)); 
 	  
+	  // error
+	  // Selling Price entered is 20 (integer) - error
+	  assertEquals("Check that new foodItems selling price is between $3 to $15", 20, ft3.getSellingPrice());
+	  //Do not add this item. test The size of the list is 2 (remain the same)?
+	  assertEquals("Check that foodItems arraylist size is 2", 2, foodItemList.size());
+	  
+	  //Test to ensure that all food items are successfully added into foodItemList
+	  C206_CaseStudy.viewAllFoodItems(foodItemList);
+	  
 	 }
 	
 	@Test
@@ -172,6 +183,9 @@ public class C206_CaseStudyTest {
 		testOutput += String.format("%-10s $%-10d\n", "Soup", 10);
 	
 		assertEquals("Check that ViewAllFoodItemlist", testOutput, allFoodItems);
+		
+		//Test to check if able to view food items in foodItemList
+		C206_CaseStudy.viewAllFoodItems(foodItemList);
 		
 	}
 	
@@ -199,6 +213,7 @@ public class C206_CaseStudyTest {
 		  //The item just added is the same as the second item of the list 
 		  assertSame("Check that foodItems is added", ft2, foodItemList.get(1)); 
 		  
+		  
 		  // Remove the last row food item in the arraylist
 		  foodItemList.remove(1);
 		  // after removing, the size of the list is 1 
@@ -207,6 +222,10 @@ public class C206_CaseStudyTest {
 		  foodItemList.remove(0);
 		  // after removing, the size of the list is 0 (empty)
 		  assertEquals("Check that foodItems arraylist size is 0", 0, foodItemList.size()); 
+		  
+		  //Test to see and ensure that foodItemList is empty
+		  C206_CaseStudy.viewAllFoodItems(foodItemList);
+			
 	}
 	
 	@Test
@@ -368,6 +387,7 @@ public class C206_CaseStudyTest {
 		st2=null;
 		ft1 = null;
 		ft2 = null;
+		ft3 = null;
 		stallList=null;
 		foodItemList = null;
 		purchaseOrder1 = null;
