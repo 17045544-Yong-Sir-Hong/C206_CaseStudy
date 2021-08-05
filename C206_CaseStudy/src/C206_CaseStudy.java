@@ -282,7 +282,11 @@ public class C206_CaseStudy {
 			if (stallname == stallList.get(i).getStallName() && confirm == 'Y' || confirm == 'y') {
 				stallList.remove(i);
 				System.out.println(stallname + " has been successfully deleted");
-
+			}else if (confirm == 'N' || confirm == 'n'){
+				System.out.println(stallname + " deletion has been cancelled ");	
+			}else {
+				System.out.println("Delete has Failed");
+				
 			}
 		}
 	}
