@@ -382,16 +382,24 @@ public class C206_CaseStudy {
 		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
 		Helper.line(80, "-");
 		String storeName = Helper.readString("Enter the Stall Name to view the Purchases Order > ");
+		boolean isValid = false;
 
 		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
 
-		for (PurchaseOrders pO : PurchaseOrdersList) {
-			if (pO.getStallName().contains(storeName)) {
-				output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(),
-						pO.getQuantity());
-			} else {
-				output = "Stall Name cannot be found in the system!";
+
+		
+		for (PurchaseOrders pO : PurchaseOrdersList) 
+		{
+			if(pO.getStallName().contentEquals(storeName))
+			{
+				output += String.format("%-20s %-20s %-20d\n", pO.getStallName(), pO.getIngredients(), pO.getQuantity());
+				isValid = true;
 			}
+		}
+		
+		if(isValid == false)
+		{
+				output = "Stall Name cannot be found in the system!";
 		}
 		System.out.println(output);
 
@@ -408,12 +416,10 @@ public class C206_CaseStudy {
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 
 		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
-			if (PurchaseOrdersList.get(i).getStallName().equals(stallName)
-					&& PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
+			if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
 				if (confirm == 'Y' || confirm == 'y') {
 					PurchaseOrdersList.remove(i);
-					System.out.println(
-							stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");
+					System.out.println(stallName + " Purchase Order of " + ingredientsName + " has been successfully deleted!");
 				}
 			}
 		}
