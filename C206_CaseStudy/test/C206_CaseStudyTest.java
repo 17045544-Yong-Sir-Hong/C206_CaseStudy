@@ -367,7 +367,7 @@ public class C206_CaseStudyTest {
 		
 		//Delete item from PurchaseOrdersList. test The size of the list is 0? -normal
 		PurchaseOrdersList.remove(0);
-		assertEquals("Check that PurchaseOrder arraylist size is 1", 0, PurchaseOrdersList.size());
+		assertEquals("Check that PurchaseOrder arraylist size is 0", 0, PurchaseOrdersList.size());
 		
 	}
 	
