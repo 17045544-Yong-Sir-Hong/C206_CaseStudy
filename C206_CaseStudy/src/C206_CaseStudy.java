@@ -57,6 +57,8 @@ public class C206_CaseStudy {
 						viewAllFoodItems(foodItemList);
 					} else if (function == 3) {
 						deleteFoodItems(foodItemList);
+					}else if (function == 4) {
+						updateFoodItems(foodItemList);
 					} else {
 						System.out.println("Invalid function");
 					}
@@ -300,7 +302,8 @@ public class C206_CaseStudy {
 		C206_CaseStudy.setHeader("FOOD ITEMS IN MENU");
 		System.out.println("1. Add Food Items to Menu");
 		System.out.println("2. View Food Items in Menu");
-		System.out.println("3. Delete Food Items in Menu \n");
+		System.out.println("3. Delete Food Items in Menu");
+		System.out.println("4. Update Food Items in Menu \n");
 	}
 
 	public static void addFoodItems(ArrayList<foodItems> foodItemList) {
@@ -360,7 +363,26 @@ public class C206_CaseStudy {
 	}
 	
 	public static void updateFoodItems(ArrayList<foodItems> foodItemList) {
+		C206_CaseStudy.setHeader("UPDATE FOOD ITEMS IN MENU");
 		
+		String name = Helper.readString("Enter food item name > ");
+		int price = Helper.readInt("Enter selling price to update ($3 to $15) > $");
+		char confirm = Helper.readChar("Are you sure (Y/N) > ");
+		
+		for (foodItems ft : foodItemList) {
+			if (ft.getName().equals(name) && (price >= 3 && price <= 15)) {
+				if (confirm == 'Y') {
+					ft.setSellingPrice(price);
+					System.out.println("The food item’s selling price has been successfully updated!");
+				} else {
+					System.out.println("Update Cancelled!");
+				}
+		
+		    } else {
+		    	System.out.println("Update Failed!");
+		    	break;
+		    }
+	    }
 	}
 
 	public static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
