@@ -24,6 +24,7 @@ public class C206_CaseStudyTest {
 	private PurchaseOrders purchaseOrder1;
 	private PurchaseOrders purchaseOrder2;
 	private PurchaseOrders purchaseOrder3;
+	private PurchaseOrders purchaseOrder4;
 	
 	
 	public C206_CaseStudyTest() {
@@ -48,8 +49,9 @@ public class C206_CaseStudyTest {
 		
 		
 		purchaseOrder1 = new PurchaseOrders("Test1", "Eggs", 20);
-		purchaseOrder2 = new PurchaseOrders("Test2", "Rice", 20);
+		purchaseOrder2 = new PurchaseOrders("Test2", "Rice", 30);
 		purchaseOrder3 = new PurchaseOrders("Test2", "Meat", -2);
+		purchaseOrder4 = new PurchaseOrders("Test2", "Rice", 10);
 		PurchaseOrdersList= new ArrayList<PurchaseOrders>();
 
 		po1 = new Poffer("Chicken", 3, "Chicken");
