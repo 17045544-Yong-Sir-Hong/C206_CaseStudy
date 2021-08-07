@@ -355,7 +355,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testAddPurchasesOrder()
+	public void testAddPurchasesOrder() // Sir Hong
 	{
 //		// Item list is not null, so that can add a new item - boundary
 //		assertNotNull("Check if there is valid PurchasesOrder arraylist to add to", PurchaseOrdersList);
@@ -404,7 +404,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testViewPurchasesOrder()
+	public void testViewPurchasesOrder() // Sir Hong
 	{
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
@@ -435,7 +435,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testdeletePurchasesOrder()
+	public void testdeletePurchasesOrder() // Sir Hong
 	{
 		PurchaseOrdersList.add(purchaseOrder1);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
@@ -460,7 +460,7 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
-	public void testupdatePurchasesOrderQuantity()
+	public void testupdatePurchasesOrderQuantity() // Sir Hong
 	{
 		//test if the array list is not empty so that we can update the values. - normal
 		PurchaseOrdersList.add(purchaseOrder1);
@@ -496,6 +496,7 @@ public class C206_CaseStudyTest {
 	}
 
 }
+
 
 
 
