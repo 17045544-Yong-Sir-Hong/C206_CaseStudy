@@ -84,11 +84,15 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testRetrieveAllStall() {
+		// test that the list is not null
 		assertNotNull("Test if there is valid stall arraylist to add to", stallList);
+		
+		// test that the stall list can be retrieved from the case study
 		String allstall = C206_CaseStudy.retrieveAllstall(stallList);
 		String testoutput="";
 		assertEquals("Check that ViewAllstallList", testoutput,allstall);
 		
+		// adding stall so that the list is not null and test that the size is 2
 		stallList.add(st1);
 		stallList.add(st2);
 		assertEquals("Test if that stall arraylist size is 2?" , 2, stallList.size());
@@ -103,17 +107,20 @@ public class C206_CaseStudyTest {
 	}
 	@Test
 	public void testdeleteStall() {
+		// add a stall to the list as it will be empty then the size will be 1
 		stallList.add(st1);	
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
 		assertSame("Check that stall is added", st1, stallList.get(0));
 		
-		//
+		//adding another stall to the list then the size will be 2
 		stallList.add(st2);	
 		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
 		assertSame("Check that stall is added", st2, stallList.get(1));
 		
+		//deleting 1 stall from the list then test if list is 1- normal
 		stallList.remove(1);
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
+		//deleting the other stall from the list then test if list is 0 -normal
 		stallList.remove(0);
 		assertEquals("Test if that stall arraylist size is 0?", 0, stallList.size());
 		
@@ -126,16 +133,13 @@ public class C206_CaseStudyTest {
 		
 		//updating 1st stall name , test if it is updated -normal
 		stallList.get(0).setStallName("food");
-		assertSame("Check that stall is added",  stallList.get(0).getStallName());
+		assertSame("Check that stall is added","food",  stallList.get(0).getStallName());
 		
 		//updating 2nd stall name,test if it is updated -normal
-		stallList.get(0).setStallName("Indian food");
-		assertSame("Check that stall is added",  stallList.get(1).getStallName());
-		
-		
+		stallList.get(1).setStallName("Indian food");
+		assertSame("Check that stall is added","Indian food",  stallList.get(1).getStallName());
 	}
 		
-	
 	
 	@Test 
 	 public void testAddFoodItems() { 
