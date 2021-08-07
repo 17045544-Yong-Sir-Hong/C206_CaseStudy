@@ -303,6 +303,27 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
+	public void testUpdatePoffer()
+	{
+		//test if the array list is not empty so that we can update the values. - normal
+		PofferList.add(po1);
+		PofferList.add(po2);
+		assertEquals("Test if that Promotion offer arraylist size is 2?", 2, PofferList.size());
+		
+		//update 1st item in promotion offer list, test if values are updated. - normal
+		PofferList.get(0).setName("Pork");
+		PofferList.get(0).setSellingPrice(5);
+		assertSame("Check that Promotion Offer is added", "Pork", PofferList.get(0).getName());
+		assertSame("Check that Promotion Offer is added", 5, PofferList.get(0).getSellingPrice());
+		
+		//update 2nd item in promotion offer list, test if values are updated. - normal
+		PofferList.get(1).setName("Mutton");
+		PofferList.get(1).setSellingPrice(7);
+		assertSame("Check that Promotion Offer is added", "Mutton", PofferList.get(1).getName());
+		assertSame("Check that Promotion Offer is added", 7, PofferList.get(1).getSellingPrice());
+	}
+	
+	@Test
 	public void testAddPurchasesOrder()
 	{
 		// Item list is not null, so that can add a new item - boundary
