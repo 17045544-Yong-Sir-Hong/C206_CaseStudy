@@ -42,6 +42,8 @@ public class C206_CaseStudy {
 						viewAllstall(stallList);
 					} else if (function == 3) {
 						deleteStall(stallList);
+					} else if (function ==4) {
+						updatestall(stallList);
 					} else {
 						System.out.println("Invalid function");
 					}
@@ -240,6 +242,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Add a New Stall");
 		System.out.println("2. View an Existing Stall");
 		System.out.println("3. Delete an Existing Stall");
+		System.out.println("4. Update an Existing Stall");
 	}
 
 	public static void addNewStall(ArrayList<stall> stallList) {
@@ -294,6 +297,22 @@ public class C206_CaseStudy {
 			}else {
 				System.out.println("Delete has Failed");
 				
+			}
+		}
+	}
+	public static void updatestall(ArrayList<stall>stallList) {
+		String stallname=Helper.readString("Enter Stall Name to update > ");
+		
+		for(int i=0; i< stallList.size(); i++) {
+			if(stallList.get(i).getStallName().equals(stallname)) {
+				String newstallname = Helper.readString("Enter new Stall Name >");
+				LocalDate today = LocalDate.now();
+				String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+				System.out.println("Date of Stall >" + formattedDate);
+				stallList.get(i).setStallName(newstallname);
+				System.out.println("Edit Successfully Saved");
+			}else  { 
+				System.out.println("No Stall found");
 			}
 		}
 	}
