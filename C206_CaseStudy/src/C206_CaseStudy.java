@@ -42,6 +42,8 @@ public class C206_CaseStudy {
 						viewAllstall(stallList);
 					} else if (function == 3) {
 						deleteStall(stallList);
+					} else if (function ==4) {
+						updatestall(stallList);
 					} else {
 						System.out.println("Invalid function");
 					}
@@ -57,6 +59,8 @@ public class C206_CaseStudy {
 						viewAllFoodItems(foodItemList);
 					} else if (function == 3) {
 						deleteFoodItems(foodItemList);
+					}else if (function == 4) {
+						updateFoodItems(foodItemList);
 					} else {
 						System.out.println("Invalid function");
 					}
@@ -243,6 +247,7 @@ public class C206_CaseStudy {
 		System.out.println("1. Add a New Stall");
 		System.out.println("2. View an Existing Stall");
 		System.out.println("3. Delete an Existing Stall");
+		System.out.println("4. Update an Existing Stall");
 	}
 
 	public static void addNewStall(ArrayList<stall> stallList) {
@@ -300,12 +305,29 @@ public class C206_CaseStudy {
 			}
 		}
 	}
+	public static void updatestall(ArrayList<stall>stallList) {
+		String stallname=Helper.readString("Enter Stall Name to update > ");
+		
+		for(int i=0; i< stallList.size(); i++) {
+			if(stallList.get(i).getStallName().equals(stallname)) {
+				String newstallname = Helper.readString("Enter new Stall Name >");
+				LocalDate today = LocalDate.now();
+				String formattedDate = today.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+				System.out.println("Date of Stall >" + formattedDate);
+				stallList.get(i).setStallName(newstallname);
+				System.out.println("Edit Successfully Saved");
+			}else  { 
+				System.out.println("No Stall found");
+			}
+		}
+	}
 
 	public static void foodItemsFunction() {
 		C206_CaseStudy.setHeader("FOOD ITEMS IN MENU");
 		System.out.println("1. Add Food Items to Menu");
 		System.out.println("2. View Food Items in Menu");
-		System.out.println("3. Delete Food Items in Menu \n");
+		System.out.println("3. Delete Food Items in Menu");
+		System.out.println("4. Update Food Items in Menu \n");
 	}
 
 	public static void addFoodItems(ArrayList<foodItems> foodItemList) {
@@ -365,7 +387,27 @@ public class C206_CaseStudy {
 	}
 	
 	public static void updateFoodItems(ArrayList<foodItems> foodItemList) {
+		C206_CaseStudy.setHeader("UPDATE FOOD ITEMS IN MENU");
 		
+		String name = Helper.readString("Enter food item name to increase its selling price by 30% > ");
+		char confirm = Helper.readChar("Are you sure (Y/N) > ");
+		
+		for (foodItems ft : foodItemList) {
+			if (ft.getName().equals(name)) {
+				if (confirm == 'Y') {
+					double increasedPrice = ft.getSellingPrice() * 1.3;
+					int updatedPrice = (int) Math.round(increasedPrice);
+					ft.setSellingPrice(updatedPrice);
+					System.out.println("The food item’s selling price has been successfully updated!");
+				} else {
+					System.out.println("Update Cancelled!");
+				}
+		
+		    } else {
+		    	System.out.println("Please enter a valid food item name!");
+		    	break;
+		    } 
+	    }
 	}
 
 	

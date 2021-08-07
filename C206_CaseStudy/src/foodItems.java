@@ -18,4 +18,9 @@ public class foodItems {
 		return sellingPrice;
 	}
 
+	public void setSellingPrice(int sellingPrice) {
+		this.sellingPrice = sellingPrice;
+	}
+	
+
 }
