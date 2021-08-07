@@ -79,7 +79,8 @@ public class C206_CaseStudy {
 					Helper.line(80, "-");
 					System.out.println("1. Add Purchase Orders Of Ingredeints");
 					System.out.println("2. View Purchase Order Of Ingredients");
-					System.out.println("3. Delete Purchase Orders Of Ingredients \n");
+					System.out.println("3. Delete Purchase Orders Of Ingredients ");
+					System.out.println("4. Update Purchase Orders Of Ingredients \n");
 
 					int function = Helper.readInt("Enter option to select a function > ");
 
@@ -89,7 +90,11 @@ public class C206_CaseStudy {
 						viewPurchasesOrder(PurchaseOrdersList);
 					} else if (function == 3) {
 						deletePurchasesOrder(PurchaseOrdersList);
-					} else {
+					} else if (function == 4) {
+						updatePurchasesOrderQuantity(PurchaseOrdersList);
+					}
+					else
+					{
 						System.out.println("Invalid function");
 					}
 
@@ -460,4 +465,42 @@ public class C206_CaseStudy {
 			System.out.println("There is no existing stall or ingredients in the system!");
 		}
 	}
+	
+	public static void updatePurchasesOrderQuantity(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+		String stallName = Helper.readString("Enter Stall Name > ");
+		String updateIngredients = Helper.readString("Enter ingredients to update > ");
+		int updateQuantity = Helper.readInt("Enter the number of quantity to update >");
+		boolean updatedOrder = false;
+
+		
+		if (stallName.isEmpty() || updateIngredients.isEmpty()) {
+			System.out.println("Stall name, Ingredients cannot be empty");
+		}
+		else if(updateQuantity <= 0)
+		{
+			System.out.println("Quantity cannot be empty or less then 1");
+		}
+
+		else 
+			{
+			for (int i = 0; i < PurchaseOrdersList.size(); i++) 
+			{
+			
+				if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(updateIngredients)) 
+				{
+					PurchaseOrdersList.get(i).setQuantity(updateQuantity);
+					updatedOrder = true;
+				}
+			}
+			if(updatedOrder == true)
+			{
+				System.out.println("Order of ingredients has been updated for purchase");
+			}
+			else
+			{
+				System.out.println("Stall name or Ingredients is invalid!");
+			}
+		}
+	}
 }
+
