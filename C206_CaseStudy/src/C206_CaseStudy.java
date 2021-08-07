@@ -400,7 +400,7 @@ public class C206_CaseStudy {
 		    } else {
 		    	System.out.println("Update Failed!");
 		    	break;
-		    }
+		    } 
 	    }
 	}
 
