@@ -384,21 +384,22 @@ public class C206_CaseStudy {
 	public static void updateFoodItems(ArrayList<foodItems> foodItemList) {
 		C206_CaseStudy.setHeader("UPDATE FOOD ITEMS IN MENU");
 		
-		String name = Helper.readString("Enter food item name > ");
-		int price = Helper.readInt("Enter selling price to update ($3 to $15) > $");
+		String name = Helper.readString("Enter food item name to increase its selling price by 30% > ");
 		char confirm = Helper.readChar("Are you sure (Y/N) > ");
 		
 		for (foodItems ft : foodItemList) {
-			if (ft.getName().equals(name) && (price >= 3 && price <= 15)) {
+			if (ft.getName().equals(name)) {
 				if (confirm == 'Y') {
-					ft.setSellingPrice(price);
+					double increasedPrice = ft.getSellingPrice() * 1.3;
+					int updatedPrice = (int) Math.round(increasedPrice);
+					ft.setSellingPrice(updatedPrice);
 					System.out.println("The food item’s selling price has been successfully updated!");
 				} else {
 					System.out.println("Update Cancelled!");
 				}
 		
 		    } else {
-		    	System.out.println("Update Failed!");
+		    	System.out.println("Please enter a valid food item name!");
 		    	break;
 		    } 
 	    }

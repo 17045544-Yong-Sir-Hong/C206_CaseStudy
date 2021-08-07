@@ -220,6 +220,25 @@ public class C206_CaseStudyTest {
 	}
 	
 	@Test
+	public void testUpdateFoodItems() {
+		//test if the array list is not empty so that we can update the selling price of food items. - normal
+		foodItemList.add(ft1);
+		foodItemList.add(ft2);
+		assertEquals("Test if that food items arraylist size is 2?", 2, foodItemList.size());
+		
+		//update Selling price of the first item in food items list, test if values are updated. - normal
+		PofferList.get(0).setSellingPrice(5);
+		assertSame("Check that Promotion Offer is added", "Pork", PofferList.get(0).getName());
+		assertSame("Check that Promotion Offer is added", 5, PofferList.get(0).getSellingPrice());
+		
+		//update 2nd item in promotion offer list, test if values are updated. - normal
+		PofferList.get(1).setName("Mutton");
+		PofferList.get(1).setSellingPrice(7);
+		assertSame("Check that Promotion Offer is added", "Mutton", PofferList.get(1).getName());
+		assertSame("Check that Promotion Offer is added", 7, PofferList.get(1).getSellingPrice());
+	}
+	
+	@Test
 	public void testaddPoffer() {
 		  // Item list is not null, so that can add a new item - boundary 
 		  assertNotNull("Check if there is valid foodItems arraylist to add to", PofferList); 
