@@ -353,6 +353,10 @@ public class C206_CaseStudy {
 		}
 
 	}
+	
+	public static void updateFoodItems(ArrayList<foodItems> foodItemList) {
+		
+	}
 
 	public static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
 		String stallName = Helper.readString("Enter Stall Name > ");
