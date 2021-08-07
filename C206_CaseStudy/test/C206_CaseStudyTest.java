@@ -73,18 +73,15 @@ public class C206_CaseStudyTest {
 		// Item list is not null, so that can add a new item
 		assertNotNull("Test if there is valid Stall arraylist to add to", stallList);
 		
-		//Given an empty list, after adding 1 item, the size of the list is 1
+		//Given an empty list, after adding 1 item, the size of the list is 1 
 		stallList.add(st1);	
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
 		assertSame("Check that stall is added", st1, stallList.get(0));
 		
+		//Given an empty list, after adding 1 item, the size of the list is 2
 		stallList.add(st2);	
 		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
 		assertSame("Check that stall is added", st2, stallList.get(1));
-		
-		
-	
-		
 		
 	}
 	@Test
@@ -104,16 +101,14 @@ public class C206_CaseStudyTest {
 		testoutput += String.format("%-10s", "Korean Food");
 		
 		C206_CaseStudy.viewAllstall(stallList);
-		
-		
-		
-		
+			
 	}
 	public void testdeleteStall() {
 		stallList.add(st1);	
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
 		assertSame("Check that stall is added", st1, stallList.get(0));
 		
+		//
 		stallList.add(st2);	
 		assertEquals("Test if that stall arraylist size is 2?", 2, stallList.size());
 		assertSame("Check that stall is added", st2, stallList.get(1));
@@ -123,9 +118,24 @@ public class C206_CaseStudyTest {
 		stallList.remove(0);
 		assertEquals("Test if that stall arraylist size is 0?", 0, stallList.size());
 		
+	}
+	public void testUpdateStall() {
+		// test if array list is not empty and values can be updated - normal
+		stallList.add(st1);
+		stallList.add(st2);
+		assertEquals("Test if that stall arraylist size is 2?" , 2, stallList.size());
+		
+		//updating 1st stall name , test if it is updated -normal
+		stallList.get(0).setStallName("food");
+		assertSame("Check that stall is added",  stallList.get(0).getStallName());
+		
+		//updating 2nd stall name,test if it is updated -normal
+		stallList.get(0).setStallName("Indian food");
+		assertSame("Check that stall is added",  stallList.get(1).getStallName());
 		
 		
 	}
+		
 	
 	
 	@Test 
