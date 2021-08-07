@@ -555,9 +555,6 @@ public class C206_CaseStudy {
 		int updateQuantity = Helper.readInt("Enter the number of quantity to update >");
 		
 		PurchaseOrders pO = new PurchaseOrders(stallName, updateIngredients, updateQuantity);
-		if (stallName.isEmpty() || updateIngredients.isEmpty()) {
-			System.out.println("Stall name, Ingredients cannot be empty");
-		}
 		return pO;
 	}
 	
@@ -566,6 +563,7 @@ public class C206_CaseStudy {
 	{
 		boolean updatedOrder = false;
 		boolean quantityMoreThen1 = false;
+		
 		{
 		for (int i = 0; i < PurchaseOrdersList.size(); i++) 
 		{
@@ -580,18 +578,22 @@ public class C206_CaseStudy {
 				}
 			}
 		}
-		if(updatedOrder == true)
+		if (pO.getStallName().isEmpty() || pO.getIngredients().isEmpty()) {
+			System.out.println("Stall name, Ingredients cannot be empty");
+		}
+		else if(updatedOrder == true)
 		{
 			System.out.println("Order of ingredients has been updated for purchase");
+		}
+		else if(updatedOrder == false)
+		{
+			System.out.println("Stall name or Ingredients is invalid!");
 		}
 		else if(quantityMoreThen1 == false)
 		{
 			System.out.println("Quantity cannot be empty or less then 1");
 		}
-		else
-		{
-			System.out.println("Stall name or Ingredients is invalid!");
-		}
+
 	}
 	}
 }
