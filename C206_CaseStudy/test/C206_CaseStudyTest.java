@@ -24,7 +24,6 @@ public class C206_CaseStudyTest {
 	private PurchaseOrders purchaseOrder1;
 	private PurchaseOrders purchaseOrder2;
 	private PurchaseOrders purchaseOrder3;
-	private PurchaseOrders purchaseOrder4;
 	
 	
 	public C206_CaseStudyTest() {
@@ -49,9 +48,8 @@ public class C206_CaseStudyTest {
 		
 		
 		purchaseOrder1 = new PurchaseOrders("Test1", "Eggs", 20);
-		purchaseOrder2 = new PurchaseOrders("Test2", "Rice", 30);
-		purchaseOrder3 = new PurchaseOrders("Test2", "Meat", -2);
-		purchaseOrder4 = new PurchaseOrders("Test2", "Rice", 10);
+		purchaseOrder2 = new PurchaseOrders("Test1", "Rice", 30);
+		purchaseOrder3 = new PurchaseOrders("Test1", "Meat", -2);
 		PurchaseOrdersList= new ArrayList<PurchaseOrders>();
 
 		po1 = new Poffer("Chicken", 3, "Chicken");
@@ -103,6 +101,7 @@ public class C206_CaseStudyTest {
 		C206_CaseStudy.viewAllstall(stallList);
 			
 	}
+	@Test
 	public void testdeleteStall() {
 		stallList.add(st1);	
 		assertEquals("Test if that stall arraylist size is 1?", 1, stallList.size());
@@ -354,26 +353,50 @@ public class C206_CaseStudyTest {
 	@Test
 	public void testAddPurchasesOrder()
 	{
-		// Item list is not null, so that can add a new item - boundary
-		assertNotNull("Check if there is valid PurchasesOrder arraylist to add to", PurchaseOrdersList);
+//		// Item list is not null, so that can add a new item - boundary
+//		assertNotNull("Check if there is valid PurchasesOrder arraylist to add to", PurchaseOrdersList);
+//		
+//		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+//		//The item just added is as same as the first item of the list
+//		PurchaseOrdersList.add(purchaseOrder1);
+//		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
+//		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
+//		
+//		//Add another item. test The size of the list is 2? -normal
+//		//The item just added is as same as the second item of the list
+//		PurchaseOrdersList.add(purchaseOrder2);
+//		assertEquals("Check that PurchaseOrder arraylist size is 2", 2, PurchaseOrdersList.size());
+//		assertSame("Check that PurchaseOrder is added", purchaseOrder2, PurchaseOrdersList.get(1));
+//		
+//		//Add another item. test The size of the list is 3? -normal
+//		//The item just added is as same as the third item of the list
+//		PurchaseOrdersList.add(purchaseOrder3);
+//		assertEquals("Check that PurchaseOrder arraylist size is 3", 3, PurchaseOrdersList.size());
+//		assertSame("Check that PurchaseOrder is added", purchaseOrder3, PurchaseOrdersList.get(2));
 		
+		
+		// Item list is not null, so that can add a new item - boundary
+		assertNotNull("Check if there is valid PurchaseOrders arraylist to add to", PurchaseOrdersList);
 		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
 		//The item just added is as same as the first item of the list
-		PurchaseOrdersList.add(purchaseOrder1);
-		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
-		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
+		C206_CaseStudy.addPurchasesOrder(PurchaseOrdersList, purchaseOrder1);
+		assertEquals("Check that PurchaseOrders arraylist size is 1", 1, PurchaseOrdersList.size());
+//		assertSame("Check that purchaseOrder1 is added", purchaseOrder1, PurchaseOrdersList.get(0));
 		
-		//Add another item. test The size of the list is 2? -normal
+		//Add another item. test The size of the list is 2? - normal
 		//The item just added is as same as the second item of the list
-		PurchaseOrdersList.add(purchaseOrder2);
-		assertEquals("Check that PurchaseOrder arraylist size is 2", 2, PurchaseOrdersList.size());
-		assertSame("Check that PurchaseOrder is added", purchaseOrder2, PurchaseOrdersList.get(1));
+		C206_CaseStudy.addPurchasesOrder(PurchaseOrdersList, purchaseOrder2);
+		assertEquals("Test that PurchaseOrders arraylist size is 2", 2, PurchaseOrdersList.size());
+//		assertSame("Test that PurchaseOrders is added", purchaseOrder2, PurchaseOrdersList.get(1));
 		
-		//Add another item. test The size of the list is 3? -normal
+		//Add another item. test The size of the list is 2? -error
 		//The item just added is as same as the third item of the list
-		PurchaseOrdersList.add(purchaseOrder3);
-		assertEquals("Check that PurchaseOrder arraylist size is 3", 3, PurchaseOrdersList.size());
-		assertSame("Check that PurchaseOrder is added", purchaseOrder3, PurchaseOrdersList.get(2));
+		C206_CaseStudy.addPurchasesOrder(PurchaseOrdersList, purchaseOrder3);
+		assertEquals("Check that PurchaseOrder arraylist size is 2", 2, PurchaseOrdersList.size());
+
+		
+		
+		
 	}
 	
 	@Test
@@ -384,7 +407,6 @@ public class C206_CaseStudyTest {
 		PurchaseOrdersList.add(purchaseOrder1);
 		assertEquals("Check that PurchaseOrder arraylist size is 1", 1, PurchaseOrdersList.size());
 		assertSame("Check that PurchaseOrder is added", purchaseOrder1, PurchaseOrdersList.get(0));
-		
 		//Add another item. test The size of the list is 2? -normal
 		//The item just added is as same as the second item of the list
 		PurchaseOrdersList.add(purchaseOrder2);
@@ -393,6 +415,19 @@ public class C206_CaseStudyTest {
 		
 		//Test PurchaseOrdersList can view purchases order
 		//C206_CaseStudy.ViewPurchasesOrder(PurchaseOrdersList);
+		
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid PurchaseOrders arraylist to retrieve item", PurchaseOrdersList);
+		
+		//test if the list of PurchaseOrders retrieved from the SourceCentre is empty - boundary
+//		C206_CaseStudy.addPurchasesOrder(PurchaseOrdersList, purchaseOrder1);
+//		C206_CaseStudy.addPurchasesOrder(PurchaseOrdersList, purchaseOrder2);
+//		assertEquals("Test that PurchaseOrders arraylist size is 2", 2, PurchaseOrdersList.size());
+		
+		
+		
+		
+		
 	}
 	
 	@Test
@@ -418,6 +453,24 @@ public class C206_CaseStudyTest {
 		PurchaseOrdersList.remove(0);
 		assertEquals("Check that PurchaseOrder arraylist size is 0", 0, PurchaseOrdersList.size());
 		
+	}
+	
+	@Test
+	public void testupdatePurchasesOrderQuantity()
+	{
+		//test if the array list is not empty so that we can update the values. - normal
+		PurchaseOrdersList.add(purchaseOrder1);
+		PurchaseOrdersList.add(purchaseOrder2);
+		assertEquals("Test if that PurchaseOrders arraylist size is 2?", 2, PurchaseOrdersList.size());
+		
+		//update 1st item Quantity in PurchaseOrdersList, test if values are updated. - normal
+		PurchaseOrdersList.get(0).setQuantity(30);
+		assertSame("Check that Quantity is updated", 30, PurchaseOrdersList.get(0).getQuantity());
+		
+		//update 2nd item in promotion offer list, test if values are updated. - normal
+		PurchaseOrdersList.get(1).setQuantity(100);
+		assertSame("Check that Quantity is updated", 100, PurchaseOrdersList.get(1).getQuantity());
+
 	}
 	
 	@After
