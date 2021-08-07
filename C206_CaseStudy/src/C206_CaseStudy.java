@@ -85,13 +85,18 @@ public class C206_CaseStudy {
 					int function = Helper.readInt("Enter option to select a function > ");
 
 					if (function == 1) {
-						addPurchasesOrder(PurchaseOrdersList);
+						PurchaseOrders pO1 = addPurchasesOrder();
+						addPurchasesOrder(PurchaseOrdersList, pO1);
 					} else if (function == 2) {
-						viewPurchasesOrder(PurchaseOrdersList);
+						String storeName = viewPurchasesOrder();
+						viewPurchasesOrder(PurchaseOrdersList, storeName);
 					} else if (function == 3) {
-						deletePurchasesOrder(PurchaseOrdersList);
+						PurchaseOrders pO3 = deletePurchasesOrder();
+						deletePurchasesOrder(PurchaseOrdersList, pO3);
 					} else if (function == 4) {
-						updatePurchasesOrderQuantity(PurchaseOrdersList);
+//						updatePurchasesOrderQuantity(PurchaseOrdersList, pO);
+						PurchaseOrders pO4 = updatePurchasesOrderQuantity();
+						updatePurchasesOrderQuantity(PurchaseOrdersList, pO4);
 					}
 					else
 					{
@@ -363,13 +368,28 @@ public class C206_CaseStudy {
 		
 	}
 
-	public static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
-		String stallName = Helper.readString("Enter Stall Name > ");
-		String ingredients = Helper.readString("Enter ingredients to buy > ");
-		int quantity = Helper.readInt("Enter the number of quantity to buy >");
+	
+	public static PurchaseOrders addPurchasesOrder() //Sir Hong
+	{
+		{
+			String stallName = Helper.readString("Enter Stall Name > ");
+			String ingredients = Helper.readString("Enter ingredients to buy > ");
+			int quantity = Helper.readInt("Enter the number of quantity to buy >");
+			
+			PurchaseOrders pO = new PurchaseOrders(stallName, ingredients, quantity);
 
+			
+			return pO;
+		
+		}
+	}
+	public static void addPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList, PurchaseOrders pO) //Sir Hong
+	{
+		String stallName = pO.getStallName();
+		String ingredients = pO.getIngredients();
+		int quantity = pO.getQuantity();
 		int count = 0;
-
+	
 		if (stallName.isEmpty() || ingredients.isEmpty() || quantity <= 0) {
 			System.out.println("New Ingredients has not been added into the Purchases Order!");
 		}
@@ -388,18 +408,23 @@ public class C206_CaseStudy {
 			}
 		}
 	}
-
-	public static void viewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
-
+	
+	public static String viewPurchasesOrder() //Sir Hong
+	{
 		Helper.line(80, "-");
 		System.out.println("VIEW PURCHASE ORDER OF INGREDIENTS");
 		Helper.line(80, "-");
+		
 		String storeName = Helper.readString("Enter the Stall Name to view the Purchases Order > ");
+		
+		return storeName;
+		
+	}
+	
+	public static void viewPurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList, String storeName) //Sir Hong
+	{
 		boolean isValid = false;
-
 		String output = String.format("%-20s %-20s %-20s\n", "Stall Name", "Ingredients", "Quantity");
-
-
 		
 		for (PurchaseOrders pO : PurchaseOrdersList) 
 		{
@@ -417,18 +442,32 @@ public class C206_CaseStudy {
 		System.out.println(output);
 
 	}
-
-	public static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList) {
-
+	
+	
+	public static PurchaseOrders deletePurchasesOrder() //Sir Hong
+	{
 		Helper.line(80, "-");
 		System.out.println("DELETE PURCHASE ORDER OF INGREDIENTS");
 		Helper.line(80, "-");
-		boolean isValid = false;
-		boolean isDeleted = false;
-
+		
 		String stallName = Helper.readString("Enter Stall Name to delete > ");
 		String ingredientsName = Helper.readString("Enter Ingredients to delete > ");
+		
+		PurchaseOrders pO = new PurchaseOrders(stallName, ingredientsName, 1);
+		
+		return pO;
+	}
 
+	
+	public static void deletePurchasesOrder(ArrayList<PurchaseOrders> PurchaseOrdersList, PurchaseOrders pO) //Sir Hong
+	{
+		
+		boolean isValid = false;
+		boolean isDeleted = false;
+		String stallName = pO.getStallName();
+		String ingredientsName = pO.getIngredients();
+		
+		
 		for (int i = 0; i < PurchaseOrdersList.size(); i++) {
 			if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(ingredientsName)) {
 				char confirm = Helper.readChar("Are you sure (Y/N) > ");
@@ -466,41 +505,52 @@ public class C206_CaseStudy {
 		}
 	}
 	
-	public static void updatePurchasesOrderQuantity(ArrayList<PurchaseOrders> PurchaseOrdersList) {
+	
+	public static PurchaseOrders updatePurchasesOrderQuantity() //Sir Hong
+	{
 		String stallName = Helper.readString("Enter Stall Name > ");
 		String updateIngredients = Helper.readString("Enter ingredients to update > ");
 		int updateQuantity = Helper.readInt("Enter the number of quantity to update >");
-		boolean updatedOrder = false;
-
 		
+		PurchaseOrders pO = new PurchaseOrders(stallName, updateIngredients, updateQuantity);
 		if (stallName.isEmpty() || updateIngredients.isEmpty()) {
 			System.out.println("Stall name, Ingredients cannot be empty");
 		}
-		else if(updateQuantity <= 0)
+		return pO;
+	}
+	
+	
+	public static void updatePurchasesOrderQuantity(ArrayList<PurchaseOrders> PurchaseOrdersList, PurchaseOrders pO)  //Sir Hong
+	{
+		boolean updatedOrder = false;
+		boolean quantityMoreThen1 = false;
+		{
+		for (int i = 0; i < PurchaseOrdersList.size(); i++) 
+		{
+		
+			if (PurchaseOrdersList.get(i).getStallName().equals(pO.getStallName()) && PurchaseOrdersList.get(i).getIngredients().equals(pO.getIngredients())) 
+			{
+				if(pO.getQuantity() > 0)
+				{
+					PurchaseOrdersList.get(i).setQuantity(pO.getQuantity());
+					updatedOrder = true;
+					quantityMoreThen1 = true;
+				}
+			}
+		}
+		if(updatedOrder == true)
+		{
+			System.out.println("Order of ingredients has been updated for purchase");
+		}
+		else if(quantityMoreThen1 == false)
 		{
 			System.out.println("Quantity cannot be empty or less then 1");
 		}
-
-		else 
-			{
-			for (int i = 0; i < PurchaseOrdersList.size(); i++) 
-			{
-			
-				if (PurchaseOrdersList.get(i).getStallName().equals(stallName) && PurchaseOrdersList.get(i).getIngredients().equals(updateIngredients)) 
-				{
-					PurchaseOrdersList.get(i).setQuantity(updateQuantity);
-					updatedOrder = true;
-				}
-			}
-			if(updatedOrder == true)
-			{
-				System.out.println("Order of ingredients has been updated for purchase");
-			}
-			else
-			{
-				System.out.println("Stall name or Ingredients is invalid!");
-			}
+		else
+		{
+			System.out.println("Stall name or Ingredients is invalid!");
 		}
+	}
 	}
 }
 
