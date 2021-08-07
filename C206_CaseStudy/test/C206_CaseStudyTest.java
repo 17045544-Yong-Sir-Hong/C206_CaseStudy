@@ -226,16 +226,13 @@ public class C206_CaseStudyTest {
 		foodItemList.add(ft2);
 		assertEquals("Test if that food items arraylist size is 2?", 2, foodItemList.size());
 		
-		//update Selling price of the first item in food items list, test if values are updated. - normal
-		PofferList.get(0).setSellingPrice(5);
-		assertSame("Check that Promotion Offer is added", "Pork", PofferList.get(0).getName());
-		assertSame("Check that Promotion Offer is added", 5, PofferList.get(0).getSellingPrice());
+		//update Selling price (increase by 30%) of the first food item in the list, test if values are updated. - normal
+		foodItemList.get(0).setSellingPrice((int) Math.round(foodItemList.get(0).getSellingPrice() *1.3));
+		assertSame("Check that selling price increased by 30%", 4, foodItemList.get(0).getSellingPrice());
 		
-		//update 2nd item in promotion offer list, test if values are updated. - normal
-		PofferList.get(1).setName("Mutton");
-		PofferList.get(1).setSellingPrice(7);
-		assertSame("Check that Promotion Offer is added", "Mutton", PofferList.get(1).getName());
-		assertSame("Check that Promotion Offer is added", 7, PofferList.get(1).getSellingPrice());
+		//update Selling price (increase by 30%) of the second food item in the list, test if values are updated. - normal
+		foodItemList.get(1).setSellingPrice((int) Math.round(foodItemList.get(1).getSellingPrice() *1.3));
+		assertSame("Check that selling price increased by 30%", 13, foodItemList.get(1).getSellingPrice());
 	}
 	
 	@Test
